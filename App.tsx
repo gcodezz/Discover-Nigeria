@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import  { enableScreens } from 'react-native-screens'
+import { useFonts } from 'expo-font'
+
+import AppNavigator from './navigation/AppNavigation'
+
+enableScreens()
 
 export default function App() {
+  const [loaded] = useFonts({
+    KarlaBold: require('./assets/fonts/Karla-Bold.ttf'),
+    KarlaMedium: require('./assets/fonts/Karla-Medium.ttf'),
+    KarlaRegular: require('./assets/fonts/Karla-Regular.ttf'),
+    KarlaLight: require('./assets/fonts/Karla-Light.ttf')
+  })
+  
+  if (!loaded) {
+    return null
+  }
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <AppNavigator />
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
