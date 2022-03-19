@@ -10,7 +10,7 @@ import CultureGridTile from '../../components/Culture/CultureGridTile'
 import Icon from '../../components/UI/Button'
 
 type CultureListScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<CultureStackParams, 'Culture'>,
+  StackNavigationProp<CultureStackParams, 'CultureList'>,
   DrawerNavigationProp<DrawerParams>
 >
 
@@ -44,6 +44,7 @@ const CultureListScreen = ({ navigation }: Props) => {
             />
         )
     }
+    
     return (
        <FlatList 
             data={cultures}

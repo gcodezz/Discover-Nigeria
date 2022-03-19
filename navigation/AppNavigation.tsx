@@ -31,7 +31,6 @@ export type FoodStackParams = {
 const FoodStackNavigator = createStackNavigator<FoodStackParams>()
 
 const FoodScreenStack = () => {
-    const navigation: any = useNavigation()
     return (
         <FoodStackNavigator.Navigator>
             <FoodStackNavigator.Screen 
@@ -47,7 +46,7 @@ const FoodScreenStack = () => {
 }
 
 export type CultureStackParams = {
-    Culture: undefined
+    CultureList: undefined
     CultureDetails: {
         title: string
         details: CultureItem["details"]
@@ -60,8 +59,11 @@ const CultureScreenStack = () => {
     return (
         <CultureStackNavigator.Navigator>
             <CultureStackNavigator.Screen
-                name='Culture'
+                name='CultureList'
                 component={CultureListScreen}
+                options={{
+                    headerTitle: 'Culture'
+                }}
             />
             <CultureStackNavigator.Screen
                 name='CultureDetails'
@@ -70,15 +72,6 @@ const CultureScreenStack = () => {
         </CultureStackNavigator.Navigator>
     )
 }
-
-// headerLeft: () => (
-//     <TouchableOpacity 
-//         style={{ paddingLeft: 5 }}
-//         onPress={() => navigation.toggleDrawer()}
-//     >
-//         <Icon iconName='menu' color='black'/>
-//     </TouchableOpacity>
-// ),
 
 const AppNavigator = () => {
     return (
@@ -120,7 +113,7 @@ const AppNavigator = () => {
                     name='Music'
                     component={FoodListScreen}
                     options={{
-                        headerTitle: 'Food',
+                        headerTitle: 'Music',
                         drawerIcon: ({color}) => (
                             <Icon iconName="music" color={color} />
                         ),
