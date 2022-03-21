@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState, useEffect, Component } from 'react'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RouteProp } from '@react-navigation/native'
+import { Audio } from 'expo-av'
 
 import { CultureStackParams } from '../../navigation/AppNavigation'
 import { cultures, CultureItem } from '../../data/culture'
@@ -12,7 +13,30 @@ type Props = {
     route: RouteProp<CultureStackParams, 'CultureDetails'>
 }
 
+let soundObject = new Audio.Sound()
+
 const CultureDetailsScreen = ({ route, navigation }: Props) => {
+    const [sound, setSound] = useState<any>()
+
+    async function playSound() {
+        console.log('Loading Sound');
+        const { sound } = await Audio.Sound.createAsync(
+           require('../../assets/music/counting.mp3')
+        );
+        setSound(sound);
+    
+        console.log('Playing Sound');
+        await sound.playAsync(); }
+    
+        useEffect(() => {
+            return sound
+            ? () => {
+                console.log('Unloading Sound');
+                sound.unloadAsync(); 
+            }
+            : undefined;
+        }, [sound])
+
     const title: string = route.params.title
     const foundCulture: CultureItem | undefined = cultures.find(culture => culture.name === title)
     const cultureArr = foundCulture?.details
@@ -34,7 +58,7 @@ const CultureDetailsScreen = ({ route, navigation }: Props) => {
                                     <Text style={styles.text}>Mumerika</Text>
                                 </View>
                                 <TouchableOpacity 
-                                    onPress={() => console.log('clicked!')}
+                                    onPress={playSound}
                                     style={styles.logo}
                                 >
                                     <Icon iconName='beamed-note' color='#404040'/>
