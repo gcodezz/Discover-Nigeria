@@ -11,8 +11,8 @@ import {
 } from './navigations'
 
 type MusicStackNavigationProps = CompositeNavigationProp<
-    StackNavigationProp<MusicStackParams, 'Musics'>,
-    DrawerNavigationProp<DrawerParams>
+  StackNavigationProp<MusicStackParams, 'Musics'>,
+  DrawerNavigationProp<DrawerParams>
 >
 
 type CultureListScreenNavigationProp = CompositeNavigationProp<
@@ -25,12 +25,23 @@ type FoodListScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerParams>
 >
 
+type DrawerContentNavigationProp = DrawerNavigationProp<DrawerParams>
+
+export interface FoodDetailsScreenProps {
+  navigation: StackNavigationProp<FoodStackParams, 'FoodDetails'>
+  route: RouteProp<FoodStackParams, 'FoodDetails'>
+}
+
+export interface DrawerContentProps {
+  navigation: DrawerContentNavigationProp
+}
+
 export interface FoodListScreenProps {
   navigation: FoodListScreenNavigationProp
 }
 
 export interface MusicScreenStackProps {
-    navigation: MusicStackNavigationProps
+  navigation: MusicStackNavigationProps
 }
 
 export interface CultureListScreenProps {
@@ -38,6 +49,6 @@ export interface CultureListScreenProps {
 }
 
 export interface CultureDetailsScreenProps {
-    navigation: StackNavigationProp<CultureStackParams, 'CultureDetails'>
-    route: RouteProp<CultureStackParams, 'CultureDetails'>
+  navigation: StackNavigationProp<CultureStackParams, 'CultureDetails'>
+  route: RouteProp<CultureStackParams, 'CultureDetails'>
 }

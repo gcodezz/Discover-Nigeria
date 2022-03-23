@@ -1,18 +1,11 @@
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import React, { useLayoutEffect } from 'react'
-import { StackNavigationProp } from '@react-navigation/stack'
-import { RouteProp } from '@react-navigation/native'
 
-import { FoodStackParams } from '../../navigation/AppNavigation'
+import { FoodDetailsScreenProps } from '../../types/props'
 import { foods, Food } from '../../data/foods'
 import Icon from '../../components/UI/Button'
 
-interface Props {
-  navigation: StackNavigationProp<FoodStackParams, 'FoodDetails'>
-  route: RouteProp<FoodStackParams, 'FoodDetails'>
-}
-
-const FoodDetailsScreen = ({ route, navigation}: Props) => {
+const FoodDetailsScreen = ({ route, navigation}: FoodDetailsScreenProps) => {
   const foodId: string = route.params.id
   const title: string = route.params.title
   const selectedFood : Food | undefined = foods.find(food => food.id == foodId)
@@ -70,6 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 10,
     overflow: 'hidden',
+    marginVertical: 10
   },
   textStyle: {
     marginVertical: 10,
