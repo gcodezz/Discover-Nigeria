@@ -1,24 +1,12 @@
-import { StackNavigationProp } from '@react-navigation/stack'
-import { DrawerNavigationProp } from '@react-navigation/drawer'
-import { CompositeNavigationProp } from '@react-navigation/native'
 import { StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 
 import { cultures, Item } from '../../data/culture'
-import { CultureStackParams, DrawerParams } from '../../navigation/AppNavigation'
 import CultureGridTile from '../../components/Culture/CultureGridTile'
 import Icon from '../../components/UI/Button'
+import { CultureListScreenProps } from '../../types/props'
 
-type CultureListScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<CultureStackParams, 'CultureList'>,
-  DrawerNavigationProp<DrawerParams>
->
-
-interface Props {
-  navigation: CultureListScreenNavigationProp
-}
-
-const CultureListScreen = ({ navigation }: Props) => {
+const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
     useLayoutEffect(() => {
         navigation.setOptions({
           headerLeft: () => (

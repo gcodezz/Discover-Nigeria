@@ -1,19 +1,22 @@
-import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
-import React, { useLayoutEffect, useState, useEffect, Component } from 'react'
-import { StackNavigationProp } from '@react-navigation/stack'
-import { RouteProp } from '@react-navigation/native'
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    TouchableOpacity, 
+    FlatList 
+} from 'react-native'
+import React, { 
+    useLayoutEffect, 
+    useState, 
+    useEffect 
+} from 'react'
 import { Audio } from 'expo-av'
 
-import { CultureStackParams } from '../../navigation/AppNavigation'
+import { CultureDetailsScreenProps } from '../../types/props'
 import { cultures, CultureItem } from '../../data/culture'
 import Icon from '../../components/UI/Button'
 
-type Props = {
-    navigation: StackNavigationProp<CultureStackParams, 'CultureDetails'>
-    route: RouteProp<CultureStackParams, 'CultureDetails'>
-}
-
-const CultureDetailsScreen = ({ route, navigation }: Props) => {
+const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) => {
     const [sound, setSound] = useState<any>()
 
     async function playSound() {

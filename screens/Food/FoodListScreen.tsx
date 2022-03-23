@@ -1,25 +1,12 @@
-import { StackNavigationProp } from '@react-navigation/stack'
-import { DrawerNavigationProp } from '@react-navigation/drawer'
-import { CompositeNavigationProp } from '@react-navigation/native'
-
 import { StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 
-import { FoodStackParams, DrawerParams } from '../../navigation/AppNavigation'
 import { foods, FoodItem } from '../../data/foods'
 import FoodGridTile from '../../components/Food/FoodGridTile'
 import Icon from '../../components/UI/Button'
+import { FoodListScreenProps } from '../../types/props'
 
-type FoodListScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<FoodStackParams, 'Food'>,
-  DrawerNavigationProp<DrawerParams>
->
-
-interface Props {
-  navigation: FoodListScreenNavigationProp
-}
-
-const FoodList = ({ navigation }: Props) => {
+const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -64,7 +51,7 @@ export const screenOptions = () => {
   }
 }
 
-export default FoodList
+export default FoodListScreen
 
 const styles = StyleSheet.create({
   main: {
