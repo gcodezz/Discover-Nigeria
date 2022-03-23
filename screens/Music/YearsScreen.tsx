@@ -6,7 +6,7 @@ type Props = {};
 const YearsScreen = (props: Props) => {
   return (
     <View>
-      <Text></Text>
+      <Text>YearScreen</Text>
     </View>
   );
 };

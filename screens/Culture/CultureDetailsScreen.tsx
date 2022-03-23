@@ -13,25 +13,21 @@ type Props = {
     route: RouteProp<CultureStackParams, 'CultureDetails'>
 }
 
-let soundObject = new Audio.Sound()
-
 const CultureDetailsScreen = ({ route, navigation }: Props) => {
     const [sound, setSound] = useState<any>()
 
     async function playSound() {
         console.log('Loading Sound');
         const { sound } = await Audio.Sound.createAsync(
-           require('../../assets/music/counting.mp3')
+           require('../../assets/music/test.m4a')
         );
         setSound(sound);
-    
-        console.log('Playing Sound');
+
         await sound.playAsync(); }
     
         useEffect(() => {
             return sound
             ? () => {
-                console.log('Unloading Sound');
                 sound.unloadAsync(); 
             }
             : undefined;

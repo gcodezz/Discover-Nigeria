@@ -44,16 +44,17 @@ const styles = StyleSheet.create({
         shadowOffset: {
           height: 1,
           width: 0
-        }
-    },
-    shadow: {
-        flex: 1,
-        borderRadius: 10,
+        },
+
         overflow: 'hidden',
+        borderRadius: 10,
         borderColor: '#888',
         borderWidth: 0.5,
         backgroundColor: '#FFF',
         elevation: 4
+    },
+    shadow: {
+        flex: 1
     },
     title: {
         fontSize: 18,

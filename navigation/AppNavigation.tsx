@@ -1,17 +1,20 @@
 import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
 import CultureDetailsScreen from '../screens/Culture/CultureDetailsScreen'
 import CultureListScreen from '../screens/Culture/CultureListScreen'
 import FoodDetailsScreen from '../screens/Food/FoodDetailsScreen'
 import FoodListScreen from '../screens/Food/FoodListScreen'
-// import PlaylistsScreen from '../screens/Music/PlaylistsScreen'
-// import ArtistsScreen from '../screens/Music/ArtistsScreen'
-// import YearsScreen from '../screens/Music/YearsScreen'
+import PlaylistsScreen from '../screens/Music/PlaylistsScreen'
+import ArtistsScreen from '../screens/Music/ArtistsScreen'
+import YearsScreen from '../screens/Music/YearsScreen'
 import Icon from '../components/UI/Button'
 import { CultureItem } from '../data/culture'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export type DrawerParams = {
     Culture: undefined
@@ -73,6 +76,57 @@ const CultureScreenStack = () => {
     )
 }
 
+export type MusicStackParams = {
+    Playlist: undefined
+    Artists: undefined
+    Year: undefined
+}
+
+const MusicStackNavigator = createMaterialTopTabNavigator<MusicStackParams>()
+
+const MusicScreenStack = ({ navigation }: any) => {
+    const insets = useSafeAreaInsets()
+    return (
+        <View style={{ flex: 1 }}>
+            <View style={{
+                marginTop: insets.top,
+                marginBottom: 20,
+                flexDirection: 'row',
+                width: '100%'
+            }}>
+                <TouchableOpacity 
+                    style={{ paddingLeft: 5 }}
+                    onPress={() => navigation.toggleDrawer()}
+                >
+                    <Icon iconName='menu' color='black'/>
+                </TouchableOpacity>
+                <Text style={{ 
+                    alignSelf: 'center', 
+                    marginLeft: 10, 
+                    fontSize: 22, 
+                    fontFamily: 'KarlaBold' 
+                }}>Music</Text>
+            </View>
+            <MusicStackNavigator.Navigator 
+                style={{ backgroundColor: 'blue' }}
+            >
+                <MusicStackNavigator.Screen
+                    name='Playlist'
+                    component={PlaylistsScreen}
+                />
+                <MusicStackNavigator.Screen
+                    name='Artists'
+                    component={ArtistsScreen}
+                />
+                <MusicStackNavigator.Screen
+                    name='Year'
+                    component={YearsScreen}
+                />
+            </MusicStackNavigator.Navigator>
+        </View>
+    )
+}
+
 const AppNavigator = () => {
     return (
         <NavigationContainer>
@@ -111,7 +165,7 @@ const AppNavigator = () => {
                 />
                 <Drawer.Screen 
                     name='Music'
-                    component={FoodListScreen}
+                    component={MusicScreenStack}
                     options={{
                         headerTitle: 'Music',
                         drawerIcon: ({color}) => (
