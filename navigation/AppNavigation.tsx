@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer, DarkTheme, useTheme } from '@react-navigation/native'
+import { NavigationContainer, useTheme } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
@@ -22,8 +22,6 @@ import {
 } from '../types/navigations'
 import { MusicScreenStackProps } from '../types/props'
 import DrawerContent from '../screens/General/DrawerContent'
-
-// const paperTheme = useTheme()
 
 const Drawer = createDrawerNavigator<DrawerParams>()
 
@@ -96,7 +94,7 @@ const MusicScreenStack = ({ navigation }: MusicScreenStackProps) => {
                         style={{ paddingLeft: 5 }}
                         onPress={() => navigation.toggleDrawer()}
                     >
-                        <Icon iconName='menu' color='black'/>
+                        <Icon iconName='menu' />
                     </TouchableOpacity>
                 )
             }}
@@ -112,20 +110,20 @@ const MusicScreenStack = ({ navigation }: MusicScreenStackProps) => {
     )
 }
 
-const AppNavigator = () => {
+const AppNavigator = (props: any) => {
+    const theme = useTheme()
     return (
-        <NavigationContainer>
+        <NavigationContainer theme={props.themeValue}>
             <Drawer.Navigator
                 screenOptions={{
                     headerShown: false,
                     drawerActiveBackgroundColor: '#aa18ea',
                     drawerActiveTintColor: '#fff',
-                    drawerInactiveTintColor: '#333',
                     drawerLabelStyle: {
                         fontSize: 16,
                         marginLeft: -20,
                         fontFamily: 'KarlaMedium'
-                    },
+                    }
                 }}
                 drawerContent={props => <DrawerContent {...props} />}
             >
@@ -134,8 +132,8 @@ const AppNavigator = () => {
                     component={FoodScreenStack}
                     options={{
                         headerTitle: 'Food',
-                        drawerIcon: ({color}) => (
-                            <Icon iconName="bowl" color={color} />
+                        drawerIcon: () => (
+                            <Icon iconName="bowl" />
                         )
                     }}
                 />
@@ -144,8 +142,8 @@ const AppNavigator = () => {
                     component={CultureScreenStack}
                     options={{
                         headerTitle: 'Yoruba Culture',
-                        drawerIcon: ({color}) => (
-                            <Icon iconName="globe" color={color} />
+                        drawerIcon: () => (
+                            <Icon iconName="globe" />
                         ),
                     }}
                 />
@@ -154,8 +152,8 @@ const AppNavigator = () => {
                     component={MusicScreenStack}
                     options={{
                         headerTitle: 'Music',
-                        drawerIcon: ({color}) => (
-                            <Icon iconName="music" color={color} />
+                        drawerIcon: () => (
+                            <Icon iconName="music" />
                         ),
                     }}
                 />

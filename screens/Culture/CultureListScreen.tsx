@@ -14,7 +14,7 @@ const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
               style={{ paddingLeft: 5 }}
               onPress={() => navigation.toggleDrawer()}
             >
-                <Icon iconName='menu' color='black'/>
+                <Icon iconName='menu' />
             </TouchableOpacity>
         )
         })
@@ -48,6 +48,6 @@ export default CultureListScreen
 
 const styles = StyleSheet.create({
     main: {
-        backgroundColor: 'white'
+       
     }
 })

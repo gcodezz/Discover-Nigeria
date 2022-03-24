@@ -1,13 +1,12 @@
 import { StackNavigationProp } from '@react-navigation/stack'
-import { CompositeNavigationProp } from '@react-navigation/native'
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
-import { RouteProp } from '@react-navigation/native'
 
 import { 
-    DrawerParams,
-    MusicStackParams,
-    CultureStackParams,
-    FoodStackParams
+  DrawerParams,
+  MusicStackParams,
+  CultureStackParams,
+  FoodStackParams
 } from './navigations'
 
 type MusicStackNavigationProps = CompositeNavigationProp<

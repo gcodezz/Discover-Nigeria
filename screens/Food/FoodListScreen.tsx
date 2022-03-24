@@ -1,5 +1,6 @@
-import { StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, FlatList, TouchableOpacity, StatusBar } from 'react-native'
 import React, { useLayoutEffect } from 'react'
+import { useTheme } from '@react-navigation/native'
 
 import { foods, FoodItem } from '../../data/foods'
 import FoodGridTile from '../../components/Food/FoodGridTile'
@@ -7,6 +8,8 @@ import Icon from '../../components/UI/Button'
 import { FoodListScreenProps } from '../../types/props'
 
 const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
+  const theme = useTheme()
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -14,7 +17,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
           style={{ paddingLeft: 5 }}
           onPress={() => navigation.toggleDrawer()}
         >
-            <Icon iconName='menu' color='black'/>
+            <Icon iconName='menu'/>
         </TouchableOpacity>
     )
     })
@@ -35,13 +38,16 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
     )
   }
   return (
-    <FlatList
-      data={foods}
-      renderItem={renderGridItem}
-      numColumns={2}
-      keyExtractor={({ id }) => id}
-      style={styles.main}
-    />
+    <>
+      <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'}/>
+      <FlatList
+        data={foods}
+        renderItem={renderGridItem}
+        numColumns={2}
+        keyExtractor={({ id }) => id}
+        style={styles.main}
+      />
+    </>
   )
 }
 
@@ -55,6 +61,6 @@ export default FoodListScreen
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: 'white'
+    // backgroundColor: 'white'
   }
 })

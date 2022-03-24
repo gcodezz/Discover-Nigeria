@@ -1,5 +1,12 @@
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { 
+  StyleSheet,
+  Text, 
+  View, 
+  Image, 
+  ScrollView 
+} from 'react-native';
 import React, { useLayoutEffect } from 'react'
+import { useTheme } from '@react-navigation/native'
 
 import { FoodDetailsScreenProps } from '../../types/props'
 import { foods, Food } from '../../data/foods'
@@ -9,6 +16,8 @@ const FoodDetailsScreen = ({ route, navigation}: FoodDetailsScreenProps) => {
   const foodId: string = route.params.id
   const title: string = route.params.title
   const selectedFood : Food | undefined = foods.find(food => food.id == foodId)
+
+  const { colors } = useTheme()
   
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -28,18 +37,18 @@ const FoodDetailsScreen = ({ route, navigation}: FoodDetailsScreenProps) => {
             source={{ uri: selectedFood!.image}}
           />
         </View>
-        <Text style={styles.textStyle}>Ingredients</Text>
+        <Text style={{...styles.textStyle, color: colors.text }}>Ingredients</Text>
         {selectedFood?.ingredients.map((ing, index) => (
           <View key={index} style={{ flexDirection: 'row' }}>
-            <Icon iconName="dot-single" color="black" />
-            <Text style={styles.miniText}>{ing}</Text>
+            <Icon iconName="dot-single" />
+            <Text style={{ ...styles.miniText, color: colors.text }}>{ing}</Text>
           </View>
         ))}
-        <Text style={styles.textStyle}>Directions</Text>
+        <Text style={{...styles.textStyle, color: colors.text }}>Directions</Text>
         {selectedFood?.directions.map((step, index) => (
           <View key={index} style={{ flexDirection: 'row' }}>
-            <Icon iconName="dot-single" color="black" />
-            <Text style={{ ...styles.miniText, marginBottom: 5}}>{step}</Text>
+            <Icon iconName="dot-single" />
+            <Text style={{ ...styles.miniText, color: colors.text, marginBottom: 5}}>{step}</Text>
           </View>
         ))}
       </View>
@@ -52,7 +61,7 @@ export default FoodDetailsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    // backgroundColor: 'white'
   },
   imageStyle: {
     width: '100%',

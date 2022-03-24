@@ -5,6 +5,7 @@ import {
     TouchableOpacity, 
     FlatList 
 } from 'react-native'
+import { useTheme } from '@react-navigation/native'
 import React, { 
     useLayoutEffect, 
     useState, 
@@ -18,6 +19,9 @@ import Icon from '../../components/UI/Button'
 
 const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) => {
     const [sound, setSound] = useState<any>()
+
+    const { colors } = useTheme();
+    const styles = makeStyles(colors)
 
     async function playSound() {
         console.log('Loading Sound');
@@ -60,7 +64,7 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
                                     onPress={playSound}
                                     style={styles.logo}
                                 >
-                                    <Icon iconName='beamed-note' color='#404040'/>
+                                    <Icon iconName='beamed-note' />
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.line}></View>
@@ -75,10 +79,10 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
 
 export default CultureDetailsScreen
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: any) => StyleSheet.create({
     background: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: colors.otherBackground,
     },
     shadow: {
         alignItems: 'center',
@@ -95,7 +99,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        borderColor: '#f2f2f2',
+        borderColor: colors.modalBorderColor,
         borderWidth: 0.5,
         shadowColor: "blue",
         shadowOpacity: 0.3,
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
           width: 0
         },
         elevation: 4,
-        backgroundColor: '#e6e6e6',
+        backgroundColor: colors.modal,
         width: '90%'
     },
     culture: {
@@ -116,7 +120,8 @@ const styles = StyleSheet.create({
     text: {
         margin: 5,
         fontSize: 17,
-        fontFamily: 'KarlaMedium'
+        fontFamily: 'KarlaMedium',
+        color: colors.modalText
     },
     logo: { 
         justifyContent: 'center' 
