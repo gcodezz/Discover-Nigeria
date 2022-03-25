@@ -96,10 +96,10 @@ Expo
 
 
 # Screenshots of pages in light ad dark modes
-![](assets/images/IMG_4733.PNG)
-![](assets/images/IMG_4734.PNG)
-![](assets/images/IMG_4735.PNG)
-![](assets/images/IMG_4736.PNG)
+<img src="assets/images/IMG_4733.PNG" width="250" height="500">
+<img src="assets/images/IMG_4734.PNG" width="250" height="500">
+<img src="assets/images/IMG_4735.PNG" width="250" height="500">
+<img src="assets/images/IMG_4736.PNG" width="250" height="500">
 
 # How to setup project and run locally
 
