@@ -140,14 +140,9 @@ https://itunes.com/apps/exponent/
 ```
 ### Start the react native bundler to test project on your device
 
-Using npm
-
-```
-npm start
-```
-
 Using expo
 
 ```
+expo install
 expo start
 ```
