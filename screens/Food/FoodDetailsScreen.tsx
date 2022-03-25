@@ -10,7 +10,7 @@ import { useTheme } from '@react-navigation/native'
 
 import { FoodDetailsScreenProps } from '../../types/props'
 import { foods, Food } from '../../data/foods'
-import Icon from '../../components/UI/Button'
+import Icon from '../../components/UI/Logo'
 
 const FoodDetailsScreen = ({ route, navigation}: FoodDetailsScreenProps) => {
   const foodId: string = route.params.id

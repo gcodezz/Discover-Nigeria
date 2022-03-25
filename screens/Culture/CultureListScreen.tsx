@@ -2,8 +2,8 @@ import { StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 
 import { cultures, Item } from '../../data/culture'
-import CultureGridTile from '../../components/Culture/CultureGridTile'
-import Icon from '../../components/UI/Button'
+import GridTile from '../../components/UI/GridTile'
+import Icon from '../../components/UI/Logo'
 import { CultureListScreenProps } from '../../types/props'
 
 const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
@@ -21,7 +21,9 @@ const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
       }, [navigation])
     const renderGridItem = ({ item }: Item ) => {
         return (
-            <CultureGridTile 
+            <GridTile 
+                flex={1/2}
+                morePadding={false}
                 title={item.name}
                 onSelect={() => {
                     navigation.navigate('CultureDetails', {

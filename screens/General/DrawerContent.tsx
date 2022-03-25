@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from 'react-native'
 import React, { useContext } from 'react'
-import { useTheme, Drawer, TouchableRipple, Switch, ThemeProvider } from 'react-native-paper'
+import { useTheme, Drawer, TouchableRipple, Switch } from 'react-native-paper'
 import {
     DrawerContentScrollView,
     DrawerItemList
@@ -10,6 +10,7 @@ import { Context } from '../../components/Context/Context'
 
 const DrawerContent = (props: any) => {
     const paperTheme = useTheme()
+    
     const { colors } = useTheme()
 
     const { toggleTheme }: any = useContext(Context)
@@ -24,7 +25,7 @@ const DrawerContent = (props: any) => {
                     <TouchableRipple onPress={() => {toggleTheme()}}>
                         <View style={styles.preference}>
                             <Text style={{ 
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontFamily: 'KarlaMedium',
                                 color: colors.text
                             }}

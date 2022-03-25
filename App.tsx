@@ -10,7 +10,7 @@ import { CustomDarkTheme, CustomDefaultTheme } from './themes/themes'
 enableScreens()
 
 export default function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme
 

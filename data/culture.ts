@@ -52,7 +52,7 @@ const body: General[] = [
 const colors: General[] = [
     {
         id: '1',
-        name: 'colors',
+        name: 'Colors',
         details: [
             {
                 englishName: 'Red',
@@ -62,6 +62,35 @@ const colors: General[] = [
         ]
     }
 ]
+
+const greetings: General[] = [
+    {
+        id: '1',
+        name: 'Greetings',
+        details: [
+            {
+                englishName: 'Good morning',
+                cultureName: 'Ekaaro',
+                audio: ''
+            },
+        ]
+    }
+]
+
+const firstWords: General[] = [
+    {
+        id: '1',
+        name: 'First Words',
+        details: [
+            {
+                englishName: 'Good morning',
+                cultureName: 'Ekaaro',
+                audio: ''
+            },
+        ]
+    }
+]
+
 
 export interface CultureItem {
     id: string
@@ -93,5 +122,15 @@ export const cultures: CultureItem[] = [
         id: '4',
         name: 'Body',
         details: body 
+    },
+    {
+        id: '5',
+        name: 'Greetings',
+        details: greetings 
+    },
+    {
+        id: '6',
+        name: 'First words',
+        details: firstWords 
     }
 ]

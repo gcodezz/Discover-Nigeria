@@ -1,3 +1,9 @@
 import { createContext } from 'react'
 
-export const Context = createContext()
+interface toggleContext {
+    toggleTheme: () => void
+}
+
+export const Context = createContext<toggleContext>({
+    toggleTheme() {}
+})

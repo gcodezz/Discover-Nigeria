@@ -4,7 +4,7 @@ import { useTheme } from '@react-navigation/native'
 
 import { foods, FoodItem } from '../../data/foods'
 import FoodGridTile from '../../components/Food/FoodGridTile'
-import Icon from '../../components/UI/Button'
+import Icon from '../../components/UI/Logo'
 import { FoodListScreenProps } from '../../types/props'
 
 const FoodListScreen = ({ navigation }: FoodListScreenProps) => {

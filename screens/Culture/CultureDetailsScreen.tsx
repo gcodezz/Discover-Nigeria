@@ -15,12 +15,12 @@ import { Audio } from 'expo-av'
 
 import { CultureDetailsScreenProps } from '../../types/props'
 import { cultures, CultureItem } from '../../data/culture'
-import Icon from '../../components/UI/Button'
+import Icon from '../../components/UI/Logo'
 
 const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) => {
     const [sound, setSound] = useState<any>()
 
-    const { colors } = useTheme();
+    const { colors } = useTheme()
     const styles = makeStyles(colors)
 
     async function playSound() {
@@ -30,19 +30,21 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
         );
         setSound(sound);
 
-        await sound.playAsync(); }
+        await sound.playAsync()
+    }
     
-        useEffect(() => {
-            return sound
-            ? () => {
-                sound.unloadAsync(); 
-            }
-            : undefined;
-        }, [sound])
+    useEffect(() => {
+        return sound
+        ? () => {
+            sound.unloadAsync(); 
+        }
+        : undefined;
+    }, [sound])
 
     const title: string = route.params.title
     const foundCulture: CultureItem | undefined = cultures.find(culture => culture.name === title)
     const cultureArr = foundCulture?.details
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: title,
@@ -57,8 +59,8 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
                         <>
                             <View style={styles.culture}>
                                 <View>
-                                    <Text style={styles.text}>American</Text>
-                                    <Text style={styles.text}>Mumerika</Text>
+                                    <Text style={styles.text}>Good Morning</Text>
+                                    <Text style={styles.text}>Eka aro</Text>
                                 </View>
                                 <TouchableOpacity 
                                     onPress={playSound}

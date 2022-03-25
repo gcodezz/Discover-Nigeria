@@ -11,19 +11,22 @@ import React from 'react';
 type Props = {
     title: string
     onSelect: () => void
+    morePadding: boolean
+    flex: number
 };
 
-const CultureGridTile = (props: Props) => {
+const GridTile = (props: Props) => {
     const TouchableCmp: React.ElementType = 
         Platform.OS === 'android' && Platform.Version >= 21 ? 
             TouchableNativeFeedback 
             : TouchableOpacity
+    const margin = props.morePadding && { paddingVertical: 5 }
 
   return (
-    <View style={styles.gridItem}>
+    <View style={{...styles.gridItem, flex: props.flex}}>
         <TouchableCmp onPress={props.onSelect} style={styles.shadow}>
             <View style={styles.titleContainer}>
-                <Text style={styles.title} numberOfLines={1}>
+                <Text style={{...styles.title, ...margin}} numberOfLines={1}>
                     {props.title}
                 </Text>
             </View>
@@ -32,11 +35,10 @@ const CultureGridTile = (props: Props) => {
   );
 };
 
-export default CultureGridTile;
+export default GridTile;
 
 const styles = StyleSheet.create({
     gridItem: {
-        flex: 1,
         margin: 10,
         shadowColor: "#000000",
         shadowOpacity: 0.3,
@@ -64,6 +66,6 @@ const styles = StyleSheet.create({
     },
     titleContainer: {
         backgroundColor: 'rgba(0,0,0,0.5)',
-        paddingVertical: 10,
+        paddingVertical: 10
     }
 });

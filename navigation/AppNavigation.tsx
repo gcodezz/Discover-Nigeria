@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer, useTheme } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
@@ -12,7 +12,7 @@ import FoodListScreen from '../screens/Food/FoodListScreen'
 import PlaylistsScreen from '../screens/Music/PlaylistsScreen'
 import ArtistsScreen from '../screens/Music/ArtistsScreen'
 import YearsScreen from '../screens/Music/YearsScreen'
-import Icon from '../components/UI/Button'
+import Icon from '../components/UI/Logo'
 import { 
     DrawerParams, 
     FoodStackParams,
@@ -111,7 +111,6 @@ const MusicScreenStack = ({ navigation }: MusicScreenStackProps) => {
 }
 
 const AppNavigator = (props: any) => {
-    const theme = useTheme()
     return (
         <NavigationContainer theme={props.themeValue}>
             <Drawer.Navigator
@@ -120,7 +119,7 @@ const AppNavigator = (props: any) => {
                     drawerActiveBackgroundColor: '#aa18ea',
                     drawerActiveTintColor: '#fff',
                     drawerLabelStyle: {
-                        fontSize: 16,
+                        fontSize: 18,
                         marginLeft: -20,
                         fontFamily: 'KarlaMedium'
                     }

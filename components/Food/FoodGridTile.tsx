@@ -45,7 +45,7 @@ export default FoodGridTile;
 
 const styles = StyleSheet.create({
   gridItem: {
-    flex: 1,
+    flex: 1/2,
     margin: 10,
     height: 190,
     shadowColor: "#000000",

@@ -1,16 +1,55 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react'
+import { useTheme } from '@react-navigation/native'
 
-type Props = {};
+import { years, YearItem, Year } from '../../data/music'
+import GridTile from '../../components/UI/GridTile'
 
-const YearsScreen = (props: Props) => {
+const YearsScreen = () => {
+  const [yearData, setYearData] = useState<Year[]>([{
+    id: '',
+    link: ''
+  }])
+
+  const { colors } = useTheme()
+  const styles = makeStyles(colors)
+
+  useEffect(() => {
+    setYearData(years)
+  }, [])
+
+  const renderGridItem = ({ item }: YearItem ) => {
+    return (
+      <GridTile
+        flex={1/3}
+        morePadding={true}
+        title={item.id}
+        onSelect={() => {
+          
+        }}
+      />
+    )
+  }
   return (
-    <View>
-      <Text>YearScreen</Text>
-    </View>
+    <FlatList
+      data={yearData}
+      renderItem={renderGridItem}
+      numColumns={3}
+      keyExtractor={({ id }) => id}
+      style={styles.main}
+    />
   );
 };
 
 export default YearsScreen;
 
-const styles = StyleSheet.create({});
+const makeStyles = (colors: any) => StyleSheet.create({
+  playlistLabel: {
+    color: colors.text,
+    fontSize: 20,
+    fontFamily: 'KarlaMedium'
+  },
+  main: {
+       
+  }
+})
