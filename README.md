@@ -1,7 +1,5 @@
 # Discover Nigeria
 
-
-
 # App Details
  Discover Nigeria via the language, food and music.
 
@@ -95,7 +93,7 @@ Expo
         ┗ 📜yarn.lock
 
 
-# Screenshots of pages in light and dark modes
+# Few Screenshots of screens in light and dark modes
 <img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4735.PNG" width="250" height="500"> 
 <img src="assets/images/IMG_4734.PNG" width="250" height="500">
 <img src="assets/images/IMG_4736.PNG" width="250" height="500">
