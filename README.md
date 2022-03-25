@@ -3,7 +3,7 @@
 
 
 # App Details
- Discover-Nigeria via the language, food and music.
+ Discover Nigeria via the language, food and music.
 
 The app will consist of:
 
