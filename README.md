@@ -107,40 +107,21 @@ git clone https://github.com/gcodezz/Discover-Nigeria.git
 
 ```
 
-### Install all dependencies
-
-Using npm
+### Install npm dependencies
 
 ```
 npm install
 ```
 
-### Start watching the file and changes
-
-Using npm
-
+### Install Expo package
 ```
-npm start --reset-cache
+expo install
 ```
 
-### Install Expo on your device using this link
-
-Expo for Android
-
-```
-https://play.google.com/store/apps/details?id=host.exp.exponent
-```
-
-Expo for IOS
-
-```
-https://itunes.com/apps/exponent/
-```
 ### Start the react native bundler to test project on your device
 
 Using expo
 
 ```
-expo install
 expo start
 ```
