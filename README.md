@@ -1,9 +1,7 @@
 # Discover Nigeria
 
-
-
 # App Details
- Discover-Nigeria via the language, food and music.
+ Discover Nigeria via the language, food and music.
 
 The app will consist of:
 
@@ -95,10 +93,9 @@ Expo
         ┗ 📜yarn.lock
 
 
-# Screenshots of pages in light ad dark modes
-<img src="assets/images/IMG_4733.PNG" width="250" height="500">
+# Few Screenshots of screens in light and dark modes
+<img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4735.PNG" width="250" height="500"> 
 <img src="assets/images/IMG_4734.PNG" width="250" height="500">
-<img src="assets/images/IMG_4735.PNG" width="250" height="500">
 <img src="assets/images/IMG_4736.PNG" width="250" height="500">
 
 # How to setup project and run locally
@@ -110,42 +107,18 @@ git clone https://github.com/gcodezz/Discover-Nigeria.git
 
 ```
 
-### Install all dependencies
-
-Using npm
+### Install npm dependencies
 
 ```
 npm install
 ```
 
-### Start watching the file and changes
-
-Using npm
-
+### Install Expo package
 ```
-npm start --reset-cache
+expo install
 ```
 
-### Install Expo on your device using this link
-
-Expo for Android
-
-```
-https://play.google.com/store/apps/details?id=host.exp.exponent
-```
-
-Expo for IOS
-
-```
-https://itunes.com/apps/exponent/
-```
 ### Start the react native bundler to test project on your device
-
-Using npm
-
-```
-npm start
-```
 
 Using expo
 
