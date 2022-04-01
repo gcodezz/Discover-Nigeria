@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, Linking } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Linking } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '@react-navigation/native'
 

@@ -14,7 +14,7 @@ import React, {
 import { Audio } from 'expo-av'
 
 import { CultureDetailsScreenProps } from '../../types/props'
-import { cultures, CultureItem } from '../../data/culture'
+import { cultures, Culture, CultureDetailItem } from '../../data/culture'
 import Icon from '../../components/UI/Logo'
 
 const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) => {
@@ -42,7 +42,7 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
     }, [sound])
 
     const title: string = route.params.title
-    const foundCulture: CultureItem | undefined = cultures.find(culture => culture.name === title)
+    const foundCulture: Culture | undefined = cultures.find(culture => culture.name === title)
     const cultureArr = foundCulture?.details
 
     useLayoutEffect(() => {
@@ -50,29 +50,35 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
             headerTitle: title,
         })
     }, [navigation])
+
+    const renderGridItem = ({ item }: CultureDetailItem) => {
+        return (
+            <>
+                <View style={styles.culture}>
+                    <View>
+                        <Text style={styles.text}>{item.englishName}</Text>
+                        <Text style={styles.text}>{item.cultureName}</Text>
+                    </View>
+                    <TouchableOpacity 
+                        onPress={playSound}
+                        style={styles.logo}
+                    >
+                        <Icon iconName='beamed-note' />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.line}></View>
+            </>
+        )
+    }
+
     return (
         <View style={styles.background}>
             <View style={styles.shadow}>
                 <FlatList 
                     data={cultureArr}
-                    renderItem={() => 
-                        <>
-                            <View style={styles.culture}>
-                                <View>
-                                    <Text style={styles.text}>Good Morning</Text>
-                                    <Text style={styles.text}>Eka aro</Text>
-                                </View>
-                                <TouchableOpacity 
-                                    onPress={playSound}
-                                    style={styles.logo}
-                                >
-                                    <Icon iconName='beamed-note' />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={styles.line}></View>
-                        </>
-                    }
+                    renderItem={renderGridItem}
                     style={styles.container}
+                    keyExtractor={({ id }) => id}
                 />
             </View>
         </View>
