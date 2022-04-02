@@ -34,7 +34,7 @@ const FoodDetailsScreen = ({ route, navigation}: FoodDetailsScreenProps) => {
         <View style={styles.imageContainer}>
           <Image 
             style={styles.imageStyle}
-            source={{ uri: selectedFood!.image}}
+            source={{ uri: selectedFood!.image }}
           />
         </View>
         <Text style={{...styles.textStyle, color: colors.text }}>Ingredients</Text>

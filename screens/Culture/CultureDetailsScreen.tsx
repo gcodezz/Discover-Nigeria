@@ -9,7 +9,8 @@ import { useTheme } from '@react-navigation/native'
 import React, { 
     useLayoutEffect, 
     useState, 
-    useEffect 
+    useEffect, 
+    useCallback
 } from 'react'
 import { Audio } from 'expo-av'
 
@@ -23,15 +24,22 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
     const { colors } = useTheme()
     const styles = makeStyles(colors)
 
-    async function playSound() {
-        console.log('Loading Sound');
+    // async function playSound() {
+    //     console.log('Loading Sound');
+    //     const { sound } = await Audio.Sound.createAsync(
+    //        require('../../assets/music/test.m4a')
+    //     );
+    //     setSound(sound);
+
+    //     await sound.playAsync()
+    // }
+
+    const playSound = useCallback(async() => {
         const { sound } = await Audio.Sound.createAsync(
-           require('../../assets/music/test.m4a')
+            require('../../assets/music/test.m4a')
         );
         setSound(sound);
-
-        await sound.playAsync()
-    }
+    }, [])
     
     useEffect(() => {
         return sound

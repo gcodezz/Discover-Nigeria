@@ -1,5 +1,5 @@
 import { StyleSheet, FlatList, TouchableOpacity } from 'react-native'
-import React, { useLayoutEffect, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { cultures, Culture, CultureListItem } from '../../data/culture'
 import GridTile from '../../components/UI/GridTile'
@@ -7,17 +7,13 @@ import Icon from '../../components/UI/Logo'
 import { CultureListScreenProps } from '../../types/props'
 
 const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
-    const [cultureData, setCulture] = useState<Culture[]>([{
-        id: '',
-        name: '',
-        details: []
-    }])
+    const [cultureData, setCulture] = useState<Culture[]>([])
 
     useEffect(() => {
         setCulture(cultures)
     }, [])
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         navigation.setOptions({
           headerLeft: () => (
             <TouchableOpacity 

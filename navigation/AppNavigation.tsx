@@ -12,6 +12,7 @@ import FoodListScreen from '../screens/Food/FoodListScreen'
 import PlaylistsScreen from '../screens/Music/PlaylistsScreen'
 import ArtistsScreen from '../screens/Music/ArtistsScreen'
 import YearsScreen from '../screens/Music/YearsScreen'
+import DrawerContent from '../screens/General/DrawerContent'
 import Icon from '../components/UI/Logo'
 import { 
     DrawerParams, 
@@ -21,7 +22,6 @@ import {
     MusicStackParams
 } from '../types/navigations'
 import { MusicScreenStackProps } from '../types/props'
-import DrawerContent from '../screens/General/DrawerContent'
 
 const Drawer = createDrawerNavigator<DrawerParams>()
 

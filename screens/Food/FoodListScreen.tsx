@@ -1,5 +1,5 @@
 import { StyleSheet, FlatList, TouchableOpacity, StatusBar } from 'react-native'
-import React, { useLayoutEffect, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 
 import { foods, FoodItem, Food } from '../../data/foods'
@@ -8,13 +8,7 @@ import Icon from '../../components/UI/Logo'
 import { FoodListScreenProps } from '../../types/props'
 
 const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
-  const [foodData, setFood] = useState<Food[]>([{
-    id: '',
-    title: '',
-    image: '',
-    ingredients: [],
-    directions: []
-  }])
+  const [foodData, setFood] = useState<Food[]>([])
 
   const theme = useTheme()
 
@@ -22,7 +16,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
     setFood(foods)
   }, [])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
         <TouchableOpacity 
@@ -49,7 +43,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
       />
     )
   }
-  
+
   return (
     <>
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'}/>
