@@ -1,10 +1,11 @@
-import { StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
 import { cultures, Culture, CultureListItem } from '../../data/culture'
 import GridTile from '../../components/UI/GridTile'
 import Icon from '../../components/UI/Logo'
 import { CultureListScreenProps } from '../../types/props'
+import TouchableCmp from '../../components/UI/TouchableBtn'
 
 const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
     const [cultureData, setCulture] = useState<Culture[]>([])
@@ -16,12 +17,12 @@ const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
     useEffect(() => {
         navigation.setOptions({
           headerLeft: () => (
-            <TouchableOpacity 
+            <TouchableCmp 
               style={{ paddingLeft: 5 }}
               onPress={() => navigation.toggleDrawer()}
             >
                 <Icon iconName='menu' />
-            </TouchableOpacity>
+            </TouchableCmp>
         )
         })
       }, [navigation])
@@ -30,7 +31,6 @@ const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
         return (
             <GridTile 
                 flex={1/2}
-                morePadding={false}
                 title={item.name}
                 onSelect={() => {
                     navigation.navigate('CultureDetails', {

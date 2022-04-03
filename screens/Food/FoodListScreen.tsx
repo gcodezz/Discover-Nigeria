@@ -1,4 +1,4 @@
-import { FlatList, TouchableOpacity, StatusBar, Text } from 'react-native'
+import { FlatList, StatusBar } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 
@@ -6,6 +6,7 @@ import { foods, FoodItem, Food } from '../../data/foods'
 import FoodGridTile from '../../components/Food/FoodGridTile'
 import Icon from '../../components/UI/Logo'
 import { FoodListScreenProps } from '../../types/props'
+import TouchableCmp from '../../components/UI/TouchableBtn'
 
 const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
   const [foodData, setFood] = useState<Food[]>([])
@@ -19,12 +20,12 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <TouchableOpacity 
+        <TouchableCmp 
           style={{ paddingLeft: 5 }}
           onPress={() => navigation.toggleDrawer()}
         >
             <Icon iconName='menu'/>
-        </TouchableOpacity>
+        </TouchableCmp>
     )
     })
   }, [navigation])

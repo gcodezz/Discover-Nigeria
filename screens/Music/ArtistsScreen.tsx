@@ -22,7 +22,6 @@ const ArtistsScreen = () => {
     return (
       <GridTile 
           flex={1/2}
-          morePadding={true}
           title={item.name}
           onSelect={() => {
             Linking.openURL(item.youtubeLink)
@@ -45,7 +44,6 @@ const ArtistsScreen = () => {
             renderItem={renderGridItem}
             numColumns={2}
             keyExtractor={({ id }) => id}
-            style={styles.main}
           />
         </>
       )}
@@ -60,8 +58,5 @@ const makeStyles = (colors: any) => StyleSheet.create({
     color: colors.text,
     fontSize: 25,
     fontFamily: 'KarlaBold'
-  },
-  main: {
-       
   }
 })

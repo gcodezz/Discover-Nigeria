@@ -1,5 +1,4 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -12,6 +11,8 @@ import FoodListScreen, { screenOptions as FoodListScreenOptions } from '../scree
 import PlaylistsScreen from '../screens/Music/PlaylistsScreen'
 import ArtistsScreen from '../screens/Music/ArtistsScreen'
 import YearsScreen from '../screens/Music/YearsScreen'
+import PlacesList from '../screens/Places/PlacesList'
+import PlaceDetails from '../screens/Places/PlaceDetails'
 import DrawerContent from '../screens/General/DrawerContent'
 import Icon from '../components/UI/Logo'
 import { 
@@ -19,9 +20,11 @@ import {
     FoodStackParams,
     CultureStackParams,
     MusicTabsParams,
-    MusicStackParams
+    MusicStackParams,
+    PlaceStackParams
 } from '../types/navigations'
 import { MusicScreenStackProps } from '../types/props'
+import TouchableCmp from '../components/UI/TouchableBtn'
 
 const Drawer = createDrawerNavigator<DrawerParams>()
 
@@ -91,12 +94,12 @@ const MusicScreenStack = ({ navigation }: MusicScreenStackProps) => {
         <MusicStackNavigator.Navigator
             screenOptions={{
                 headerLeft: () => (
-                    <TouchableOpacity 
+                    <TouchableCmp 
                         style={{ paddingLeft: 5 }}
                         onPress={() => navigation.toggleDrawer()}
                     >
                         <Icon iconName='menu' />
-                    </TouchableOpacity>
+                    </TouchableCmp>
                 )
             }}
         >
@@ -108,6 +111,26 @@ const MusicScreenStack = ({ navigation }: MusicScreenStackProps) => {
                 }}
             />
         </MusicStackNavigator.Navigator>
+    )
+}
+
+const PlacesStackNavigator = createStackNavigator<PlaceStackParams>()
+
+const PlacesScreenStack = () => {
+    return (
+        <PlacesStackNavigator.Navigator>
+            <PlacesStackNavigator.Screen
+                name='PlaceList'
+                component={PlacesList}
+                options={{
+                    headerTitle: 'Places'
+                }}
+            />
+            <PlacesStackNavigator.Screen
+                name='PlaceDetails'
+                component={PlaceDetails}
+            />
+        </PlacesStackNavigator.Navigator>
     )
 }
 
@@ -154,6 +177,16 @@ const AppNavigator = (props: any) => {
                         headerTitle: 'Music',
                         drawerIcon: () => (
                             <Icon iconName="music" />
+                        ),
+                    }}
+                />
+                <Drawer.Screen 
+                    name='Places'
+                    component={PlacesScreenStack}
+                    options={{
+                        headerTitle: 'Places',
+                        drawerIcon: () => (
+                            <Icon iconName="location" />
                         ),
                     }}
                 />

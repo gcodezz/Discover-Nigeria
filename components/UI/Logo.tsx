@@ -10,9 +10,9 @@ const Button = ({ iconName }: Props) => {
   const { colors } = useTheme()
   return (
     <Entypo 
-        name={iconName} 
-        size={24} 
-        color={colors.text} 
+      name={iconName} 
+      size={24} 
+      color={colors.text} 
     />
   )
 }

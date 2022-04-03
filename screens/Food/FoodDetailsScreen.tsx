@@ -1,25 +1,24 @@
 import { 
   StyleSheet,
   Text, 
-  View, 
-  Image, 
+  View,
   ScrollView 
 } from 'react-native';
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 
 import { FoodDetailsScreenProps } from '../../types/props'
 import { foods, Food } from '../../data/foods'
 import Icon from '../../components/UI/Logo'
+import BigImage from '../../components/UI/BigImage';
 
-const FoodDetailsScreen = ({ route, navigation}: FoodDetailsScreenProps) => {
-  const foodId: string = route.params.id
-  const title: string = route.params.title
-  const selectedFood : Food | undefined = foods.find(food => food.id == foodId)
+const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
+  const { id, title } = route.params
+  const selectedFood : Food | undefined = foods.find(food => food.id == id)
 
   const { colors } = useTheme()
   
-  useLayoutEffect(() => {
+  useEffect(() => {
     navigation.setOptions({
       headerTitle: title,
     })
@@ -31,12 +30,7 @@ const FoodDetailsScreen = ({ route, navigation}: FoodDetailsScreenProps) => {
       style={styles.container}
     >
       <View style={{ marginHorizontal: '5%' }}>
-        <View style={styles.imageContainer}>
-          <Image 
-            style={styles.imageStyle}
-            source={{ uri: selectedFood!.image }}
-          />
-        </View>
+        <BigImage uri={selectedFood!.image} />
         <Text style={{...styles.textStyle, color: colors.text }}>Ingredients</Text>
         {selectedFood?.ingredients.map((ing, index) => (
           <View key={index} style={{ flexDirection: 'row' }}>
@@ -61,18 +55,6 @@ export default FoodDetailsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: 'white'
-  },
-  imageStyle: {
-    width: '100%',
-    height: 300,
-    alignSelf: 'center'
-  },
-  imageContainer: {
-    flex: 1,
-    borderRadius: 10,
-    overflow: 'hidden',
-    marginVertical: 10
   },
   textStyle: {
     marginVertical: 10,

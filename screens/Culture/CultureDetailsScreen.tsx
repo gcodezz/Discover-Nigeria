@@ -2,7 +2,6 @@ import {
     StyleSheet, 
     Text, 
     View, 
-    TouchableOpacity, 
     FlatList 
 } from 'react-native'
 import { useTheme } from '@react-navigation/native'
@@ -16,6 +15,7 @@ import { Audio } from 'expo-av'
 import { CultureDetailsScreenProps } from '../../types/props'
 import { cultures, Culture, CultureDetailItem } from '../../data/culture'
 import Icon from '../../components/UI/Logo'
+import TouchableCmp from '../../components/UI/TouchableBtn'
 
 const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) => {
     const [sound, setSound] = useState<any>()
@@ -59,12 +59,12 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
                         <Text style={styles.text}>{item.englishName}</Text>
                         <Text style={styles.text}>{item.cultureName}</Text>
                     </View>
-                    <TouchableOpacity 
+                    <TouchableCmp 
                         onPress={playSound}
                         style={styles.logo}
                     >
                         <Icon iconName='beamed-note' />
-                    </TouchableOpacity>
+                    </TouchableCmp>
                 </View>
                 <View style={styles.line}></View>
             </>

@@ -1,14 +1,12 @@
 import { 
-  TouchableOpacity,
   View,
   StyleSheet,
-  Platform,
-  TouchableNativeFeedback,
   Dimensions
- } from 'react-native';
- 
+} from 'react-native'; 
 import React from 'react';
 import { Card } from 'react-native-paper'
+
+import TouchableCmp from '../UI/TouchableBtn'
 
 type Props = {
     title: string
@@ -19,11 +17,6 @@ type Props = {
 const { height } = Dimensions.get('window')
 
 const FoodGridTile = (props: Props) => {
-  const TouchableCmp: React.ElementType = 
-    Platform.OS === 'android' && Platform.Version >= 21 ? 
-      TouchableNativeFeedback 
-      : TouchableOpacity;
-
   return (
     <View style={styles.gridItem}>
       <TouchableCmp onPress={props.onSelect}>
@@ -65,4 +58,4 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '80%'
   }
-});
+})

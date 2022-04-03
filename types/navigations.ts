@@ -1,9 +1,10 @@
-import { CultureItem } from "../data/culture"
+import { Culture } from "../data/culture"
 
 export type DrawerParams = {
     Culture: undefined
     Foods: undefined
     Music: undefined
+    Places: undefined
 }
 
 export type FoodStackParams = {
@@ -18,7 +19,15 @@ export type CultureStackParams = {
     CultureList: undefined
     CultureDetails: {
         title: string
-        details: CultureItem["details"]
+        details: Culture["details"]
+    }
+}
+
+export type PlaceStackParams = {
+    PlaceList: undefined
+    PlaceDetails: {
+        id: string
+        name: string
     }
 }
 

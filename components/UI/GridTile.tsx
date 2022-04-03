@@ -1,13 +1,12 @@
 import { 
     StyleSheet, 
-    View, 
-    Platform, 
-    Dimensions,
-    TouchableNativeFeedback, 
-    TouchableOpacity 
+    View,
+    Dimensions
 } from 'react-native';
-import React, { ElementType } from 'react'
+import React from 'react'
 import { Card } from 'react-native-paper'
+
+import TouchableCmp from '../UI/TouchableBtn'
 
 type Props = {
     title: string
@@ -18,11 +17,6 @@ type Props = {
 const { height } = Dimensions.get('window')
 
 const GridTile = (props: Props) => {
-    const TouchableCmp: ElementType = 
-        Platform.OS === 'android' && Platform.Version >= 21 ? 
-            TouchableNativeFeedback 
-            : TouchableOpacity
-
   return (
     <View style={{...styles.gridItem, flex: props.flex}}>
         <TouchableCmp onPress={props.onSelect}>
