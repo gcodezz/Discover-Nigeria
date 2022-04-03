@@ -9,20 +9,35 @@ import { useTheme } from '@react-navigation/native'
 
 import { FoodDetailsScreenProps } from '../../types/props'
 import { foods, Food } from '../../data/foods'
-import Icon from '../../components/UI/Logo'
+import Icon from '../../components/UI/Icon'
 import BigImage from '../../components/UI/BigImage';
+import TouchableCmp from '../../components/UI/TouchableBtn';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../App';
+import { toggleFoodFavorite } from '../../store/actions';
 
 const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
   const { id, title } = route.params
   const selectedFood : Food | undefined = foods.find(food => food.id == id)
+  const currentFoodIsFav = useSelector((state: RootState) => 
+    state.foods.favFoods.some(food => food.id === id)
+  )
+  const dispatch = useDispatch()
 
   const { colors } = useTheme()
   
   useEffect(() => {
     navigation.setOptions({
       headerTitle: title,
+      headerRight: () => (
+        <TouchableCmp style={{ paddingRight: 10 }} onPress={() => {
+          dispatch(toggleFoodFavorite(id))
+        }}>
+          <Icon iconName={currentFoodIsFav ? 'heart' : 'heart-outlined'}/>
+        </TouchableCmp>
+      )
     })
-  }, [navigation])
+  }, [selectedFood, currentFoodIsFav])
 
   return (
     <ScrollView 

@@ -7,13 +7,12 @@ import {
 } from '@react-navigation/drawer'
 
 import { Context } from '../../components/Context/Context'
-
 const DrawerContent = (props: any) => {
     const paperTheme = useTheme()
     
     const { colors } = useTheme()
 
-    const { toggleTheme }: any = useContext(Context)
+    const { toggleTheme } = useContext(Context)
 
     return (
         <View style={{ flex: 1 }}>

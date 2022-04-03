@@ -5,6 +5,7 @@ export type DrawerParams = {
     Foods: undefined
     Music: undefined
     Places: undefined
+    Favorites: undefined
 }
 
 export type FoodStackParams = {
@@ -39,4 +40,13 @@ export type MusicTabsParams = {
 
 export type MusicStackParams = {
     Musics: undefined
+}
+
+export type FavStackParams = {
+    FavoriteStack: undefined
+}
+
+export type FavoriteTabParams = {
+    Foods: undefined
+    Places: undefined
 }

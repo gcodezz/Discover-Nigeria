@@ -10,20 +10,36 @@ import { useTheme } from '@react-navigation/native'
 
 import { PlaceDetailsScreenProps } from '../../types/props'
 import { places, Place } from '../../data/places'
+import Icon from '../../components/UI/Icon'
 import BigImage from '../../components/UI/BigImage'
 import TouchableCmp from '../../components/UI/TouchableBtn'
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../App';
+import { togglePlaceFavorite } from '../../store/actions';
 
 const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
     const { id, name } = route.params
     const selectedPlace : Place | undefined = places.find(place => place.id == id)
+    const currentPlaceIsFav = useSelector((state: RootState) => 
+        state.places.favPlaces.some(place => place.id === id)
+    )
+
+    const dispatch = useDispatch()
 
     const { colors } = useTheme()
 
     useEffect(() => {
         navigation.setOptions({
           headerTitle: name,
+          headerRight: () => (
+            <TouchableCmp style={{ paddingRight: 10 }} onPress={() => {
+              dispatch(togglePlaceFavorite(id))
+            }}>
+              <Icon iconName={currentPlaceIsFav ? 'heart' : 'heart-outlined'}/>
+            </TouchableCmp>
+          )
         })
-    }, [navigation])
+    }, [selectedPlace, currentPlaceIsFav])
 
     return (
         <ScrollView 

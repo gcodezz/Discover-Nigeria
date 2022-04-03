@@ -20,13 +20,13 @@ type CultureListScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerParams>
 >
 
-type PlacesListScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<PlaceStackParams, 'PlaceList'>,
+type FoodListScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<FoodStackParams, 'Food'>,
   DrawerNavigationProp<DrawerParams>
 >
 
-type FoodListScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<FoodStackParams, 'Food'>,
+type PlaceScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<PlaceStackParams, 'PlaceList'>,
   DrawerNavigationProp<DrawerParams>
 >
 
@@ -45,16 +45,16 @@ export interface FoodListScreenProps {
   navigation: FoodListScreenNavigationProp
 }
 
+export interface PlaceListScreenProps {
+  navigation: PlaceScreenNavigationProp
+}
+
 export interface MusicScreenStackProps {
   navigation: MusicStackNavigationProps
 }
 
 export interface CultureListScreenProps {
   navigation: CultureListScreenNavigationProp
-}
-
-export interface PlaceListScreenProps {
-  navigation: PlacesListScreenNavigationProp
 }
 
 export interface CultureDetailsScreenProps {

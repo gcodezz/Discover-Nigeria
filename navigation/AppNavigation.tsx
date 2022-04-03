@@ -13,15 +13,19 @@ import ArtistsScreen from '../screens/Music/ArtistsScreen'
 import YearsScreen from '../screens/Music/YearsScreen'
 import PlacesList from '../screens/Places/PlacesList'
 import PlaceDetails from '../screens/Places/PlaceDetails'
+import FoodFavorite from '../screens/Favorite/FoodFavorite'
+import PlaceFavorite from '../screens/Favorite/PlaceFavorite'
 import DrawerContent from '../screens/General/DrawerContent'
-import Icon from '../components/UI/Logo'
+import Icon from '../components/UI/Icon'
 import { 
     DrawerParams, 
     FoodStackParams,
     CultureStackParams,
     MusicTabsParams,
     MusicStackParams,
-    PlaceStackParams
+    PlaceStackParams,
+    FavoriteTabParams,
+    FavStackParams
 } from '../types/navigations'
 import { MusicScreenStackProps } from '../types/props'
 import TouchableCmp from '../components/UI/TouchableBtn'
@@ -45,6 +49,56 @@ const FoodScreenStack = () => {
         </FoodStackNavigator.Navigator>
     )
 }
+
+const FavoriteTabs = createMaterialTopTabNavigator<FavoriteTabParams>()
+
+const FavTabStack = () => {
+    return (
+        <FavoriteTabs.Navigator>
+            <FavoriteTabs.Screen
+                name='Foods'
+                component={FoodFavorite}
+            />
+            <FavoriteTabs.Screen
+                name='Places'
+                component={PlaceFavorite}
+            />
+        </FavoriteTabs.Navigator>
+    )
+}
+
+const FavStackNavigator = createStackNavigator<FavStackParams>()
+
+const FavScreenStack = ({ navigation }: MusicScreenStackProps) => {
+    return (
+        <FavStackNavigator.Navigator>
+            <FavStackNavigator.Screen 
+                name='FavoriteStack'
+                component={FavTabStack}
+                options={{
+                    headerTitle: 'My Favorites',
+                    headerLeft: () => (
+                        <TouchableCmp 
+                            style={{ paddingLeft: 5 }}
+                            onPress={() => navigation.toggleDrawer()}
+                        >
+                            <Icon iconName='menu' />
+                        </TouchableCmp>
+                    )
+                }}
+            />
+            <FoodStackNavigator.Screen 
+                name='FoodDetails'
+                component={FoodDetailsScreen}
+            />
+            <PlacesStackNavigator.Screen
+                name='PlaceDetails'
+                component={PlaceDetails}
+            />
+        </FavStackNavigator.Navigator>
+    )
+}
+
 
 const CultureStackNavigator = createStackNavigator<CultureStackParams>()
 
@@ -187,6 +241,17 @@ const AppNavigator = (props: any) => {
                         headerTitle: 'Places',
                         drawerIcon: () => (
                             <Icon iconName="location" />
+                        ),
+                    }}
+                />
+                <Drawer.Screen 
+                    name='Favorites'
+                    component={FavScreenStack}
+                    options={{
+                        headerTitle: 'My Favorites',
+                        drawerLabel: 'My Favorites',
+                        drawerIcon: () => (
+                            <Icon iconName="heart" />
                         ),
                     }}
                 />

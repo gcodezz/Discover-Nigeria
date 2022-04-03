@@ -1,21 +1,21 @@
 import { FlatList, StatusBar } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { foods, FoodItem, Food } from '../../data/foods'
+import { FoodItem, Food } from '../../data/foods'
 import FoodGridTile from '../../components/Food/FoodGridTile'
-import Icon from '../../components/UI/Logo'
+import Icon from '../../components/UI/Icon'
 import { FoodListScreenProps } from '../../types/props'
+import { fetchFoods } from '../../store/actions'
 import TouchableCmp from '../../components/UI/TouchableBtn'
+import { RootState } from '../../App'
 
 const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
-  const [foodData, setFood] = useState<Food[]>([])
-
   const theme = useTheme()
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    setFood(foods)
-  }, [])
+  const { availableFoods }: { availableFoods: Food[] } = useSelector((state: RootState) => state.foods)
 
   useEffect(() => {
     navigation.setOptions({
@@ -26,9 +26,13 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
         >
             <Icon iconName='menu'/>
         </TouchableCmp>
-    )
+      )
     })
   }, [navigation])
+
+  useEffect(() => {
+    dispatch(fetchFoods())
+  }, [dispatch])
 
   const renderGridItem = ({ item }: FoodItem ) => {
     return (
@@ -50,7 +54,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
     <>
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'}/>
       <FlatList
-        data={foodData}
+        data={availableFoods}
         renderItem={renderGridItem}
         numColumns={2}
         keyExtractor={({ id }) => id}

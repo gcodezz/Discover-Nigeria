@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import { cultures, Culture, CultureListItem } from '../../data/culture'
 import GridTile from '../../components/UI/GridTile'
-import Icon from '../../components/UI/Logo'
+import Icon from '../../components/UI/Icon'
 import { CultureListScreenProps } from '../../types/props'
 import TouchableCmp from '../../components/UI/TouchableBtn'
 

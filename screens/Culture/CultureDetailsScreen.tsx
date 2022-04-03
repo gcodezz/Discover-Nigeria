@@ -14,7 +14,7 @@ import { Audio } from 'expo-av'
 
 import { CultureDetailsScreenProps } from '../../types/props'
 import { cultures, Culture, CultureDetailItem } from '../../data/culture'
-import Icon from '../../components/UI/Logo'
+import Icon from '../../components/UI/Icon'
 import TouchableCmp from '../../components/UI/TouchableBtn'
 
 const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) => {
