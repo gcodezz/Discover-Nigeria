@@ -22,7 +22,6 @@ const YearsScreen = () => {
     return (
       <GridTile
         flex={1/3}
-        morePadding={true}
         title={item.id}
         onSelect={() => {
           

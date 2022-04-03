@@ -22,16 +22,22 @@ describe('FoodScreen', () => {
   it('contains Culture and Music links in Drawer', () => {
     cy.visit('/')
 
-    cy.get('a').contains('Culture')
+    cy.get('a')
+      .contains('Culture')
 
-    cy.get('a').contains('Music')
+    cy.get('a')
+      .contains('Music')
   })
 
-  it('can navigate to Music and Culture screens', () => {
+  it('can navigate to Music and Culture screens from Food screen', () => {
     cy.visit('/')
 
-    cy.get('a').contains('Music').click({ force: true })
-    
-    cy.get('a').contains('Culture').click({ force: true })
+    cy.get('a')
+      .contains('Music')
+      .click({ force: true })
+
+    cy.get('a')
+      .contains('Culture')
+      .click({ force: true })
   })
 })

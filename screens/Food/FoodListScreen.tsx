@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, TouchableOpacity, StatusBar, Text } from 'react-native'
+import { FlatList, TouchableOpacity, StatusBar, Text } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 
