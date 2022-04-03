@@ -8,7 +8,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import CultureDetailsScreen from '../screens/Culture/CultureDetailsScreen'
 import CultureListScreen from '../screens/Culture/CultureListScreen'
 import FoodDetailsScreen from '../screens/Food/FoodDetailsScreen'
-import FoodListScreen from '../screens/Food/FoodListScreen'
+import FoodListScreen, { screenOptions as FoodListScreenOptions } from '../screens/Food/FoodListScreen'
 import PlaylistsScreen from '../screens/Music/PlaylistsScreen'
 import ArtistsScreen from '../screens/Music/ArtistsScreen'
 import YearsScreen from '../screens/Music/YearsScreen'
@@ -33,6 +33,7 @@ const FoodScreenStack = () => {
             <FoodStackNavigator.Screen 
                 name='Food'
                 component={FoodListScreen}
+                options={FoodListScreenOptions}
             />
             <FoodStackNavigator.Screen 
                 name='FoodDetails'

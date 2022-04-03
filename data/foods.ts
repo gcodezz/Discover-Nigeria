@@ -13,7 +13,7 @@ export interface FoodItem {
 export const foods: Food[] = [
     {
         id: '1',
-        title: 'Egusi soup',
+        title: 'Egusi',
         image: "https://media.istockphoto.com/photos/egusi-soup-nigerian-cuisine-picture-id498310620?k=20&m=498310620&s=612x612&w=0&h=7q34WknzLr5MEz0OLaTPMtKc_6O6QN8-uZWQ16ltUMY=",
         ingredients: [
             '1 cup blended melon',
@@ -38,7 +38,7 @@ export const foods: Food[] = [
     },
     {
         id: '2',
-        title: 'Okro soup',
+        title: 'Okro',
         image: 'https://nmasinachiskitchen.com.ng/wp-content/uploads/2021/02/okro-soup.jpg',
         ingredients: [
             '1 cup blended melon',
@@ -63,7 +63,7 @@ export const foods: Food[] = [
     },
     {
         id: '3',
-        title: 'Vegetable Soup',
+        title: 'Efo riro',
         image: 'https://mandifoods.com.ng/wp-content/uploads/2021/01/Vegetable-Soup.jpg',
         ingredients: [
             '1 cup blended melon',

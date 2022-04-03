@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, TouchableOpacity, StatusBar } from 'react-native'
+import { StyleSheet, FlatList, TouchableOpacity, StatusBar, Text } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 
@@ -31,6 +31,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
 
   const renderGridItem = ({ item }: FoodItem ) => {
     return (
+      
       <FoodGridTile
         title={item.title}
         image={item.image}
@@ -52,7 +53,6 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
         renderItem={renderGridItem}
         numColumns={2}
         keyExtractor={({ id }) => id}
-        style={styles.main}
       />
     </>
   )
@@ -60,14 +60,8 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
 
 export const screenOptions = () => {
   return {
-    headerTitle: 'Food'
+    headerTitle: 'Foods'
   }
 }
 
 export default FoodListScreen
-
-const styles = StyleSheet.create({
-  main: {
-    // backgroundColor: 'white'
-  }
-})

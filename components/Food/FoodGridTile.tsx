@@ -1,20 +1,22 @@
 import { 
   TouchableOpacity,
   View,
-  Text,
   StyleSheet,
   Platform,
-  ImageBackground,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  Dimensions
  } from 'react-native';
  
 import React from 'react';
+import { Card } from 'react-native-paper'
 
 type Props = {
     title: string
     image: string
     onSelect: () => void
 };
+
+const { height } = Dimensions.get('window')
 
 const FoodGridTile = (props: Props) => {
   const TouchableCmp: React.ElementType = 
@@ -24,18 +26,13 @@ const FoodGridTile = (props: Props) => {
 
   return (
     <View style={styles.gridItem}>
-      <TouchableCmp onPress={props.onSelect} style={styles.shadow}>
-        <ImageBackground
-          source={{ uri: props.image}}
-          style={styles.bgImage}
-          resizeMode="cover"
-        >
-          <View style={styles.titleContainer}>
-            <Text style={styles.title} numberOfLines={1}>
-              {props.title}
-            </Text>
-          </View>
-        </ImageBackground>
+      <TouchableCmp onPress={props.onSelect}>
+        <Card style={styles.cardStyle}>
+          <Card.Cover style={styles.cardCover} source={{ uri: props.image }} />
+          <Card.Content style={{ height: '20%', backgroundColor: '#737373' }}>
+            <Card.Title titleStyle={styles.title} title={props.title} />
+          </Card.Content>
+        </Card>
       </TouchableCmp>
     </View>
   )
@@ -47,44 +44,25 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1/2,
     margin: 10,
-    height: 190,
-    shadowColor: "#000000",
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 1,
-      width: 0
-    },
-
     overflow: 'hidden',
     borderRadius: 10,
     borderColor: '#888',
-    // borderWidth: 0.5,
-    backgroundColor: '#FFF',
-    elevation: 4
-  },
-  shadow: {
-    // flex: 1,
-    borderRadius: 10,
-    overflow: 'hidden',
-    borderColor: '#888',
-    borderWidth: 0.3,
+    borderWidth: 0.5,
     backgroundColor: '#FFF',
     elevation: 4
   },
   title: {
+    flex: 1,
     fontSize: 18,
     textAlign: 'center',
-    color: 'white',
-    fontFamily: 'KarlaBold'
+    fontFamily: 'KarlaBold',
+    color: 'white'
   },
-  bgImage: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'flex-end',
+  cardStyle: {
+    height: height * 0.2
   },
-  titleContainer: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    paddingVertical: 5,
-  },
+  cardCover: {
+    flex: 1,
+    height: '80%'
+  }
 });
