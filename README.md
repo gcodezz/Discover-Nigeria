@@ -7,9 +7,9 @@ The app will consist of:
 
     └──Culture Screen
 
-    └──Culture list Screen
+    └──Culture details Screen
 
-    └──Food list Screen
+    └──Food Screen
 
     └──Food details Screen
 
@@ -19,7 +19,13 @@ The app will consist of:
 
     └──Year Screen
 
-    └──Edit Product Screen
+    └──Places Screen
+
+    └──Place details Screen
+
+    └──Favorite places Screen
+
+    └──Favorite foods Screen
 
     └──Drawer
 
@@ -29,6 +35,7 @@ The app will consist of:
 
 React Native
 TypeScript
+Cypress
 Expo
 
 
@@ -56,29 +63,48 @@ Expo
             ┣ 📦Food
                 ┗ 📜FoodGridTile.tsx
             ┗ 📦UI
+                ┣ 📜BigImage.tsx
                 ┣ 📜GridTile.tsx
+                ┣ 📜Icon.tsx
                 ┗ 📜Logo.tsx
         📦constants
             ┗ 📜Colors.ts
+        📦cypress
+            ┣ 📦integration
+                ┣ 📜CultureScreen.ts
+                ┣ 📜FavoriteFoodScreen.ts
+                ┣ 📜FavoritePlaceScreen.ts
+                ┣ 📜FoodScreen.ts
+                ┗ 📜MusicScreen.ts
         📦data
             ┣ 📜culture.ts
             ┣ 📜foods.ts
-            ┗ 📜music.ts
+            ┣ 📜music.ts
+            ┗ 📜places.ts
         📦navigation
-            ┗ 📜ShopAppNavigation.ts
+            ┗ 📜AppNavigation.tsx
         📦screens
             ┣ 📦Culture
-                ┣ 📜CultureDetailsScreen.js
-                ┗ 📜CultureListScreen.js
+                ┣ 📜CultureDetailsScreen.tsx
+                ┗ 📜CultureListScreen.tsx
+            ┣ 📦Favorite
+                ┣ 📜FoodFavorite.tsx
+                ┗ 📜PlaceFavorite.tsx
             ┣ 📦Food
-                ┣ 📜FoodDetailsScreen.js
-                ┗ 📜FoodListScreen.js
+                ┣ 📜FoodDetailsScreen.tsx
+                ┗ 📜FoodListScreen.tsx
             ┣ 📦General
-                ┗ 📜DrawerContent.js
-            ┗ 📦Music
+                ┗ 📜DrawerContent.tsx
+            ┣ 📦Music
                 ┣ 📜ArtistsScreen.tsx
                 ┣ 📜PlaylistsScreen.tsx
                 ┗ 📜YearsScreen.tsx
+            ┗ 📦Places
+                ┣ 📜PlaceDetails.tsx
+                ┗ 📜PlacesList.tsx
+        📦store
+            ┣ 📜actions.ts
+            ┗ 📜reducers.ts
         📦themes
             ┗ 📜themes.ts
         📦types
@@ -94,9 +120,9 @@ Expo
 
 
 # Few Screenshots of screens in light and dark modes
-<img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4735.PNG" width="250" height="500"> 
-<img src="assets/images/IMG_4734.PNG" width="250" height="500">
-<img src="assets/images/IMG_4736.PNG" width="250" height="500">
+<img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4987.PNG" width="250" height="500"> 
+<img src="assets/images/IMG_4990.PNG" width="250" height="500">
+<img src="assets/images/IMG_4736.PNG" width="250" height="500"> <img src="assets/images/IMG_4988.PNG" width="250" height="500">
 
 # How to setup project and run locally
 

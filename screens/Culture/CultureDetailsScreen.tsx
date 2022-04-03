@@ -24,7 +24,6 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
     const styles = makeStyles(colors)
 
     const playSound = async() => {
-        console.log('Loading Sound');
         const { sound } = await Audio.Sound.createAsync(
            require('../../assets/music/test.m4a')
         );

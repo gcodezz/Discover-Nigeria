@@ -92,7 +92,6 @@ export const placeReducer = (state = initialPlaceState, action: PlaceActionTypes
                     favPlaces: updatedFavPlaces
                 }
             } else {
-                console.log(state.availablePlaces)
                 const place = state.availablePlaces.find(
                     place => place.id === action.placeId
                 )
