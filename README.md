@@ -5,11 +5,11 @@
 
 The app will consist of:
 
-    └──Culture Screen
+    └──Cultures Screen
 
     └──Culture details Screen
 
-    └──Food Screen
+    └──Foods Screen
 
     └──Food details Screen
 
@@ -35,7 +35,7 @@ The app will consist of:
 
 React Native
 TypeScript
-Cypress
+Cypress {for testing UI}
 Expo
 
 
@@ -49,10 +49,12 @@ Expo
                 ┣ 📜Karla-Medium.ttf
                 ┗ 📜Karla-Regular.ttf
             📦images
-                ┣ 📜Karla-Bold.ttf
-                ┣ 📜Karla-Light.ttf
-                ┣ 📜Karla-Medium.ttf
-                ┗ 📜Karla-Regular.ttf
+                ┣ 📜IMG_4733.PNG
+                ┣ 📜IMG_4736.PNG
+                ┣ 📜IMG_4987.PNG
+                ┣ 📜IMG_4788.PNG
+                ┣ 📜IMG_4790.PNG
+                ┗ 📜IMG_4991.PNG
             📦music
                 ┗ 📜test.m4a
             ┣ 📜icon.png
