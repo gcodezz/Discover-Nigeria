@@ -52,6 +52,9 @@ export const fetchFavPlaces = () => {
     return async (dispatch: any) => {
         const favPlacesData = await AsyncStorage.getItem('favPlaces')
         let favPlaces = JSON.parse(favPlacesData)
+        if (favPlaces == null){
+            return
+        }
 
         let favoritePlaces = []
         for (let id of favPlaces){
@@ -69,6 +72,9 @@ export const fetchFavFoods = () => {
     return async (dispatch: any) => {
         const favFoodsData = await AsyncStorage.getItem('favFoods')
         let favFoods = JSON.parse(favFoodsData)
+        if (favFoods == null){
+            return
+        }
         let favoriteFoods = []
         for (let id of favFoods){
             const food = foods.find(food => food.id === id)
@@ -84,7 +90,12 @@ export const fetchFavFoods = () => {
 const editStorage = async(id: string, cat: string) => {
     const favData = await AsyncStorage.getItem(`${cat}`)
     let favs = JSON.parse(favData)
-    if (favs.length > 0){
+    if (favs == null) {
+        AsyncStorage.setItem(
+            `${cat}`,
+            JSON.stringify([id])
+        )
+    } else {
         const existingIndex = favs.findIndex(
             (dataId: string) => dataId === id
         )
@@ -96,11 +107,6 @@ const editStorage = async(id: string, cat: string) => {
         AsyncStorage.setItem(
             `${cat}`,
             JSON.stringify(favs)
-        )
-    } else {
-        AsyncStorage.setItem(
-            `${cat}`,
-            JSON.stringify([id])
         )
     }
 }
