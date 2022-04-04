@@ -1,17 +1,20 @@
 import { StyleSheet, FlatList, Text, View } from 'react-native'
-import React from 'react'
-import { useSelector, } from 'react-redux'
+import React, { useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTheme } from '@react-navigation/native'
 
 import { PlaceItem, Place } from '../../data/places'
 import GridTile from '../../components/Food/FoodGridTile'
 import { RootState } from '../../App'
 import { PlaceListScreenProps } from '../../types/props'
+import { fetchFavPlaces } from '../../store/actions'
 
 const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
   const { favPlaces }: { favPlaces: Place[] } = useSelector((state: RootState) => state.places)
 
   const { colors } = useTheme()
+
+  const dispatch = useDispatch()
 
   const renderGridItem = ({ item }: PlaceItem ) => {
     return (
@@ -26,7 +29,15 @@ const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
         }}
       />
     )
-}
+  }
+
+  const loadFavPlaces = useCallback(async() => {
+    await dispatch(fetchFavPlaces())
+  }, [dispatch])
+
+  useEffect(() => {
+      loadFavPlaces()
+  }, [])
 
   return (
     <>

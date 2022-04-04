@@ -2,8 +2,9 @@ import React, { useMemo, useState } from 'react'
 import  { enableScreens } from 'react-native-screens'
 import { useFonts } from 'expo-font'
 import { Provider as PaperProvider } from 'react-native-paper'
-import { createStore, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
+import ReduxThunk from 'redux-thunk'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider as ReduxProvider } from 'react-redux'
 
 import AppNavigator from './navigation/AppNavigation'
 import { Context } from './components/Context/Context'
@@ -19,7 +20,7 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk))
 
 export default function App() {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
@@ -45,11 +46,11 @@ export default function App() {
   
   return (
     <PaperProvider theme={theme}>
-      <Provider store={store}>
+      <ReduxProvider store={store}>
         <Context.Provider value={context}>
             <AppNavigator themeValue={theme}/>
         </Context.Provider>
-      </Provider>
+      </ReduxProvider>
     </PaperProvider>
   )
 }
