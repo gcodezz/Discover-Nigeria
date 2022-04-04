@@ -24,7 +24,7 @@ export const places: Place[] = [
     {
         id: '2',
         name: 'Agodi Gardens',
-        image: 'https://guardian.ng/wp-content/uploads/2017/06/IMG_2244.jpg',
+        image: 'https://oldnaija.files.wordpress.com/2015/11/agodi2.jpg',
         map: `https://www.google.com/maps/place/Dache+foods/@7.4063528,3.8988253,16.74z/data=!4m5!3m4!1s0x10398d5961e8b01d:0xe86927f0592539e0!8m2!3d7.4067835!4d3.9008784`,
         details: `Located in the heart of Ibadan, at the foot of Old Mokola Hill is Agodi Gardens which stands out in the city of brown roofs. It would interest you to note that Agodi Gardens was originally created in 1967 and managed by the Western region then. It was formerly called Agodi Zoological and Botanical Gardens and was a top notch recreational centre. However, the infamous Ogunpa flood disaster in Ibadan, which happened in 1980 destroyed the garden; the flood swept away most of the animals and left the place in a deplorable state. Thankfully in 2012, the government decided to renovate it and in 2014 the new Agodi Gardens was re-opened.
         Agodi Gardens has a lot of nice features including a water park, children’s play area, rides, picnic spots, restaurant area, a lake and a mini zoo. It is very serene, lush and green; perfect for photo shoots, pre-wedding shoots, picnics, garden parties, outdoor events, concerts and even weddings. Every visit to Agodi Gardens is enchanting due to the sheer beauty and serenity of the place.`

@@ -1,5 +1,5 @@
 import { FlatList, StatusBar } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -29,10 +29,6 @@ const PlacesList = ({ navigation }: PlaceListScreenProps) => {
       )
     })
   }, [navigation])
-
-    useEffect(() => {
-      dispatch(fetchPlaces())
-  }, [])
 
     const renderGridItem = ({ item }: PlaceItem ) => {
       return (

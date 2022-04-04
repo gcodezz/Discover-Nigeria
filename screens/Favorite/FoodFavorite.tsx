@@ -1,14 +1,13 @@
 import { StyleSheet, FlatList, Text, View } from 'react-native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useTheme } from '@react-navigation/native'
 
 import { FoodItem, Food } from '../../data/foods'
-import FoodGridTile from '../../components/Food/FoodGridTile'
+import GridTile from '../../components/Food/FoodGridTile'
 import { RootState } from '../../App'
 import { FoodListScreenProps } from '../../types/props'
-// import { useEffect } from 'react'
-// import { fetchFavPlaces } from '../../store/actions'
+// import { fetchFavFoods } from '../../store/actions'
 
 const FoodFavorite = ({ navigation }: FoodListScreenProps) => {
     const { favFoods }: { favFoods: Food[] } = useSelector((state: RootState) => state.foods)
@@ -19,7 +18,7 @@ const FoodFavorite = ({ navigation }: FoodListScreenProps) => {
 
     const renderGridItem = ({ item }: FoodItem ) => {
         return (
-          <FoodGridTile
+          <GridTile
             title={item.title}
             image={item.image}
             onSelect={() => {
@@ -31,6 +30,14 @@ const FoodFavorite = ({ navigation }: FoodListScreenProps) => {
           />
         )
     }
+
+    // const loadFavFoods = useCallback(async() => {
+    //     await dispatch(fetchFavFoods())
+    //   }, [dispatch])
+    
+    //   useEffect(() => {
+    //     loadFavFoods()
+    //   }, [])
 
     return (
         <>

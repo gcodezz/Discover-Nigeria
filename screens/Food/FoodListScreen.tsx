@@ -7,7 +7,7 @@ import { FoodItem, Food } from '../../data/foods'
 import FoodGridTile from '../../components/Food/FoodGridTile'
 import Icon from '../../components/UI/Icon'
 import { FoodListScreenProps } from '../../types/props'
-import { fetchFoods } from '../../store/actions'
+import { fetchFoods, fetchPlaces } from '../../store/actions'
 import TouchableCmp from '../../components/UI/TouchableBtn'
 import { RootState } from '../../App'
 
@@ -32,6 +32,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
 
   useEffect(() => {
     dispatch(fetchFoods())
+    dispatch(fetchPlaces())
   }, [dispatch])
 
   const renderGridItem = ({ item }: FoodItem ) => {

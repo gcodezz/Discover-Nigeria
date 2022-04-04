@@ -36,7 +36,7 @@ const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
   }, [dispatch])
 
   useEffect(() => {
-      loadFavPlaces()
+    loadFavPlaces()
   }, [])
 
   return (

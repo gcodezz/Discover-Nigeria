@@ -21,7 +21,7 @@ const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
     const { id, name } = route.params
     const selectedPlace : Place | undefined = places.find(place => place.id == id)
     const currentPlaceIsFav = useSelector((state: RootState) => 
-        state.places.favPlaces.some(place => place.id === id)
+      state.places.favPlaces.some(place => place.id === id)
     )
 
     const dispatch = useDispatch()
