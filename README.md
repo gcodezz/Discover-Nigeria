@@ -1,7 +1,7 @@
 # Discover Nigeria
 
 # App Details
- Discover Nigeria via the language, food and music.
+Discover Nigeria via the language, food and music.
 
 The app will consist of:
 
@@ -33,10 +33,10 @@ The app will consist of:
 
 # Stack
 
-React Native
-TypeScript
-Cypress {for testing UI}
-Expo
+    React Native
+    TypeScript
+    Cypress {for testing UI}
+    Expo
 
 
 # Top-level directory layout
