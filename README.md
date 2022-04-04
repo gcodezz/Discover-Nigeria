@@ -33,10 +33,10 @@ The app will consist of:
 
 # Stack
 
-    React Native
+    React Native (Expo Framework)
     TypeScript
-    Cypress {for testing UI}
-    Expo
+    Redux - State management
+    Cypress - Writing tests
 
 
 # Top-level directory layout
