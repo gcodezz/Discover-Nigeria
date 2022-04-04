@@ -69,8 +69,6 @@ Expo
                 ┣ 📜GridTile.tsx
                 ┣ 📜Icon.tsx
                 ┗ 📜Logo.tsx
-        📦constants
-            ┗ 📜Colors.ts
         📦cypress
             ┣ 📦integration
                 ┣ 📜CultureScreen.ts

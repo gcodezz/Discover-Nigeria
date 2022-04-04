@@ -6,10 +6,9 @@ describe('FavoritePlaceScreen', () => {
             .contains('My Favorites')
             .click({ force: true })
         
-        cy.get('a')
-            .contains('Places')
+        cy.contains('Places')
             .click({ force: true })
 
-        cy.contains(`You don't have a favourite place yet!`)
+        cy.contains(`You don't have a favorite place yet!`)
     })
 })
