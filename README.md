@@ -123,6 +123,7 @@ Expo
 <img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4987.PNG" width="250" height="500"> 
 <img src="assets/images/IMG_4990.PNG" width="250" height="500">
 <img src="assets/images/IMG_4736.PNG" width="250" height="500"> <img src="assets/images/IMG_4988.PNG" width="250" height="500">
+<img src="assets/images/IMG_4991.PNG" width="250" height="500">
 
 # How to setup project and run locally
 
