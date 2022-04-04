@@ -3,6 +3,7 @@ import {
     SET_FOODS, 
     SET_PLACES,
     TOGGLE_FOOD_FAVORITE,
+    SET_FAV_FOODS,
     SET_FAV_PLACES
 } from './actions'
 import { Food } from '../data/foods'
@@ -28,7 +29,12 @@ export interface ToggleFoodFavActionType {
     foodId: string
 }
 
-type FoodActionTypes = SetFoodsActionType | ToggleFoodFavActionType
+export interface SetFavFoodsActionType {
+    type: typeof SET_FAV_FOODS,
+    favFoods: []
+}
+
+type FoodActionTypes = SetFoodsActionType | ToggleFoodFavActionType | SetFavFoodsActionType
 
 export const foodReducer = (state = initialFoodState, action: FoodActionTypes) => {
     switch (action.type) {
@@ -56,6 +62,11 @@ export const foodReducer = (state = initialFoodState, action: FoodActionTypes) =
                     ...state,
                     favFoods: state.favFoods.concat(food)
                 }
+            }
+        case SET_FAV_FOODS:
+            return {
+                ...state,
+                favFoods: action.favFoods
             }
         default: 
             return state

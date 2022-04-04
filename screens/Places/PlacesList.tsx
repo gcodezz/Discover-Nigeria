@@ -1,19 +1,17 @@
 import { FlatList, StatusBar } from 'react-native'
 import React, { useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { PlaceItem, Place } from '../../data/places'
 import PlaceGridTile from '../../components/Food/FoodGridTile'
 import Icon from '../../components/UI/Icon'
 import { PlaceListScreenProps } from '../../types/props'
 import TouchableCmp from '../../components/UI/TouchableBtn'
-import { fetchPlaces } from '../../store/actions'
 import { RootState } from '../../App'
 
 const PlacesList = ({ navigation }: PlaceListScreenProps) => {
   const theme = useTheme()
-  const dispatch = useDispatch()
 
   const { availablePlaces }: { availablePlaces: Place[] } = useSelector((state: RootState) => state.places)
 

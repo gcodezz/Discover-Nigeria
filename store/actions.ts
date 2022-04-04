@@ -4,8 +4,7 @@ import { foods } from '../data/foods'
 import { places } from '../data/places'
 import { 
     SetFoodsActionType, 
-    SetPlacesActionType,
-    ToggleFoodFavActionType
+    SetPlacesActionType
 } from './reducers'
 
 export const TOGGLE_FOOD_FAVORITE = 'TOGGLE_FOOD_FAVORITE'
@@ -13,11 +12,15 @@ export const TOGGLE_PLACE_FAVORITE = 'TOGGLE_PLACE_FAVORITE'
 export const SET_FOODS = 'SET_FOODS'
 export const SET_PLACES = 'SET_PLACES'
 export const SET_FAV_PLACES = 'SET_FAV_PLACES'
+export const SET_FAV_FOODS = 'SET_FAV_FOODS'
 
-export const toggleFoodFavorite = (id: string): ToggleFoodFavActionType => {
-    return {
-        type: TOGGLE_FOOD_FAVORITE,
-        foodId: id
+export const toggleFoodFavorite = (id: string) => {
+    return async (dispatch: any) => {
+        dispatch({
+            type: TOGGLE_FOOD_FAVORITE,
+            foodId: id
+        })
+        await editStorage(id, 'favFoods')
     }
 }
 
@@ -27,7 +30,7 @@ export const togglePlaceFavorite = (id: string) => {
             type: TOGGLE_PLACE_FAVORITE,
             placeId: id
         })
-        await editPlaceStorage(id)
+        await editStorage(id, 'favPlaces')
     }
 }
 
@@ -62,26 +65,41 @@ export const fetchFavPlaces = () => {
     }
 }
 
-const editPlaceStorage = async(id: string) => {
-    const favPlacesData = await AsyncStorage.getItem('favPlaces')
-    let favPlaces = JSON.parse(favPlacesData)
-    if (favPlaces.length > 0){
-        const existingIndex = favPlaces.findIndex(
-            placeId => placeId === id
+export const fetchFavFoods = () => {
+    return async (dispatch: any) => {
+        const favFoodsData = await AsyncStorage.getItem('favFoods')
+        let favFoods = JSON.parse(favFoodsData)
+        let favoriteFoods = []
+        for (let id of favFoods){
+            const food = foods.find(food => food.id === id)
+            favoriteFoods.push(food)
+        }
+        dispatch({
+            type: SET_FAV_FOODS,
+            favFoods: favoriteFoods
+        })
+    }
+}
+
+const editStorage = async(id: string, cat: string) => {
+    const favData = await AsyncStorage.getItem(`${cat}`)
+    let favs = JSON.parse(favData)
+    if (favs.length > 0){
+        const existingIndex = favs.findIndex(
+            (dataId: string) => dataId === id
         )
         if (existingIndex >= 0){
-            favPlaces.splice(existingIndex, 1)
+            favs.splice(existingIndex, 1)
         } else {
-            favPlaces.push(id)
+            favs.push(id)
         }
         AsyncStorage.setItem(
-            'favPlaces',
-            JSON.stringify(favPlaces)
+            `${cat}`,
+            JSON.stringify(favs)
         )
-        // console.log(JSON.parse(await AsyncStorage.getItem('favPlaces')))
     } else {
         AsyncStorage.setItem(
-            'favPlaces',
+            `${cat}`,
             JSON.stringify([id])
         )
     }

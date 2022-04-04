@@ -7,10 +7,11 @@ import { FoodItem, Food } from '../../data/foods'
 import GridTile from '../../components/Food/FoodGridTile'
 import { RootState } from '../../App'
 import { FoodListScreenProps } from '../../types/props'
-// import { fetchFavFoods } from '../../store/actions'
+import { fetchFavFoods } from '../../store/actions'
 
 const FoodFavorite = ({ navigation }: FoodListScreenProps) => {
     const { favFoods }: { favFoods: Food[] } = useSelector((state: RootState) => state.foods)
+    // console.log(favFoods)
 
     const { colors } = useTheme()
 
@@ -31,13 +32,13 @@ const FoodFavorite = ({ navigation }: FoodListScreenProps) => {
         )
     }
 
-    // const loadFavFoods = useCallback(async() => {
-    //     await dispatch(fetchFavFoods())
-    //   }, [dispatch])
+    const loadFavFoods = useCallback(async() => {
+        await dispatch(fetchFavFoods())
+    }, [dispatch])
     
-    //   useEffect(() => {
-    //     loadFavFoods()
-    //   }, [])
+    useEffect(() => {
+        loadFavFoods()
+    }, [])
 
     return (
         <>
