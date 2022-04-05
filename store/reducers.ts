@@ -6,35 +6,13 @@ import {
     SET_FAV_FOODS,
     SET_FAV_PLACES
 } from './actions'
-import { Food } from '../data/foods'
-import { Place } from '../data/places'
+
+import { PlaceActionTypes, FoodActionTypes } from './types'
 
 const initialFoodState = {
     favFoods: [],
     availableFoods: []
 }
-
-const initialPlaceState = {
-    favPlaces: [],
-    availablePlaces: []
-}
-
-export interface SetFoodsActionType {
-    type: typeof SET_FOODS
-    foods: Food[]
-}
-
-export interface ToggleFoodFavActionType {
-    type: typeof TOGGLE_FOOD_FAVORITE
-    foodId: string
-}
-
-export interface SetFavFoodsActionType {
-    type: typeof SET_FAV_FOODS,
-    favData: Food[] | Place[]
-}
-
-type FoodActionTypes = SetFoodsActionType | ToggleFoodFavActionType | SetFavFoodsActionType
 
 export const foodReducer = (state = initialFoodState, action: FoodActionTypes) => {
     switch (action.type) {
@@ -73,22 +51,10 @@ export const foodReducer = (state = initialFoodState, action: FoodActionTypes) =
     }
 }
 
-export interface SetPlacesActionType {
-    type: typeof SET_PLACES
-    places: Place[]
+const initialPlaceState = {
+    favPlaces: [],
+    availablePlaces: []
 }
-
-export interface TogglePlacesFavActionType {
-    type: typeof TOGGLE_PLACE_FAVORITE
-    placeId: string
-}
-
-export interface SetFavPlacesActionType {
-    type: typeof SET_FAV_PLACES,
-    favData: Place[] | Food[]
-}
-
-type PlaceActionTypes = SetPlacesActionType | TogglePlacesFavActionType | SetFavPlacesActionType
 
 export const placeReducer = (state = initialPlaceState, action: PlaceActionTypes) => {
     switch (action.type) {

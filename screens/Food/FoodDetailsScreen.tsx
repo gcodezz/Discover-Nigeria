@@ -2,19 +2,19 @@ import {
   StyleSheet,
   Text, 
   View,
-  ScrollView 
+  ScrollView,
 } from 'react-native';
 import React, { useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { FoodDetailsScreenProps } from '../../types/props'
 import { foods, Food } from '../../data/foods'
 import Icon from '../../components/UI/Icon'
-import BigImage from '../../components/UI/BigImage';
-import TouchableCmp from '../../components/UI/TouchableBtn';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../App';
-import { toggleFoodFavorite } from '../../store/actions';
+import BigImage from '../../components/UI/BigImage'
+import TouchableCmp from '../../components/UI/TouchableBtn'
+import { RootState } from '../../App'
+import { toggleFoodFavorite } from '../../store/actions'
 
 const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
   const { id, title } = route.params
@@ -30,7 +30,7 @@ const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
     navigation.setOptions({
       headerTitle: title,
       headerRight: () => (
-        <TouchableCmp style={{ paddingRight: 10 }} onPress={() => {
+        <TouchableCmp style={{ marginRight: 10 }} onPress={() => {
           dispatch(toggleFoodFavorite(id))
         }}>
           <Icon iconName={currentFoodIsFav ? 'heart' : 'heart-outlined'}/>

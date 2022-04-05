@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { foods } from '../data/foods'
 import { places } from '../data/places'
-import { SetFoodsActionType, SetPlacesActionType } from './reducers'
+import { SetFoodsActionType, SetPlacesActionType } from './types'
 
 export const TOGGLE_FOOD_FAVORITE = 'TOGGLE_FOOD_FAVORITE'
 export const TOGGLE_PLACE_FAVORITE = 'TOGGLE_PLACE_FAVORITE'

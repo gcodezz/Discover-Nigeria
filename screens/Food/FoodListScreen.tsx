@@ -21,7 +21,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
     navigation.setOptions({
       headerLeft: () => (
         <TouchableCmp 
-          style={{ paddingLeft: 5 }}
+          style={{ merginLeft: 5 }}
           onPress={() => navigation.toggleDrawer()}
         >
             <Icon iconName='menu'/>

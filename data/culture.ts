@@ -23,12 +23,12 @@ const nationalities: Details[] = [
     {
         id: '1',
         englishName: 'American',
-        cultureName: 'Mumerika',
+        cultureName: 'Amerika',
         audio: ''
     }, {
         id: '2',
-        englishName: 'American',
-        cultureName: 'Mumerika',
+        englishName: 'British',
+        cultureName: 'Oyinbo',
         audio: ''
     }
 ]
