@@ -7,7 +7,7 @@ import { PlaceItem, Place } from '../../data/places'
 import GridTile from '../../components/Food/FoodGridTile'
 import { RootState } from '../../App'
 import { PlaceListScreenProps } from '../../types/props'
-import { fetchFavPlaces } from '../../store/actions'
+import { fetchFavs } from '../../store/actions'
 
 const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
   const { favPlaces }: { favPlaces: Place[] } = useSelector((state: RootState) => state.places)
@@ -32,7 +32,7 @@ const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
   }
 
   const loadFavPlaces = useCallback(async() => {
-    await dispatch(fetchFavPlaces())
+    await dispatch(fetchFavs('favPlaces'))
   }, [dispatch])
 
   useEffect(() => {

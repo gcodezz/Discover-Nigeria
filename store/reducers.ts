@@ -31,7 +31,7 @@ export interface ToggleFoodFavActionType {
 
 export interface SetFavFoodsActionType {
     type: typeof SET_FAV_FOODS,
-    favFoods: []
+    favData: Food[] | Place[]
 }
 
 type FoodActionTypes = SetFoodsActionType | ToggleFoodFavActionType | SetFavFoodsActionType
@@ -66,7 +66,7 @@ export const foodReducer = (state = initialFoodState, action: FoodActionTypes) =
         case SET_FAV_FOODS:
             return {
                 ...state,
-                favFoods: action.favFoods
+                favFoods: action.favData
             }
         default: 
             return state
@@ -85,7 +85,7 @@ export interface TogglePlacesFavActionType {
 
 export interface SetFavPlacesActionType {
     type: typeof SET_FAV_PLACES,
-    favPlaces: []
+    favData: Place[] | Food[]
 }
 
 type PlaceActionTypes = SetPlacesActionType | TogglePlacesFavActionType | SetFavPlacesActionType
@@ -120,7 +120,7 @@ export const placeReducer = (state = initialPlaceState, action: PlaceActionTypes
         case SET_FAV_PLACES:
             return {
                 ...state,
-                favPlaces: action.favPlaces
+                favPlaces: action.favData
             }
         default: 
             return state

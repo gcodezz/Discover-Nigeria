@@ -2,10 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { foods } from '../data/foods'
 import { places } from '../data/places'
-import { 
-    SetFoodsActionType, 
-    SetPlacesActionType
-} from './reducers'
+import { SetFoodsActionType, SetPlacesActionType } from './reducers'
 
 export const TOGGLE_FOOD_FAVORITE = 'TOGGLE_FOOD_FAVORITE'
 export const TOGGLE_PLACE_FAVORITE = 'TOGGLE_PLACE_FAVORITE'
@@ -48,42 +45,36 @@ export const fetchPlaces = (): SetPlacesActionType => {
     }
 }
 
-export const fetchFavPlaces = () => {
+export const fetchFavs = (cat: string) => {
     return async (dispatch: any) => {
-        const favPlacesData = await AsyncStorage.getItem('favPlaces')
-        let favPlaces = JSON.parse(favPlacesData)
-        if (favPlaces == null){
+        const favData = await AsyncStorage.getItem(`${cat}`)
+        let favPlacesOrFoods = JSON.parse(favData)
+        if (favPlacesOrFoods == null){
             return
         }
 
-        let favoritePlaces = []
-        for (let id of favPlaces){
-            const place = places.find(place => place.id === id)
-            favoritePlaces.push(place)
+        let favoritePlacesOrFoods = []
+        let dataToBeSearch = []
+        if (cat == 'favFoods'){
+            dataToBeSearch = foods
+        } else {
+            dataToBeSearch = places
         }
-        dispatch({
-            type: SET_FAV_PLACES,
-            favPlaces: favoritePlaces
-        })
-    }
-}
-
-export const fetchFavFoods = () => {
-    return async (dispatch: any) => {
-        const favFoodsData = await AsyncStorage.getItem('favFoods')
-        let favFoods = JSON.parse(favFoodsData)
-        if (favFoods == null){
-            return
+        for (let id of favPlacesOrFoods){
+            const placeOrFood = dataToBeSearch.find(placeOrFood => placeOrFood.id === id)
+            favoritePlacesOrFoods.push(placeOrFood)
         }
-        let favoriteFoods = []
-        for (let id of favFoods){
-            const food = foods.find(food => food.id === id)
-            favoriteFoods.push(food)
+        if (cat == 'favFoods'){
+            dispatch({
+                type: SET_FAV_FOODS,
+                favData: favoritePlacesOrFoods
+            })
+        } else {
+            dispatch({
+                type: SET_FAV_PLACES,
+                favData: favoritePlacesOrFoods
+            })
         }
-        dispatch({
-            type: SET_FAV_FOODS,
-            favFoods: favoriteFoods
-        })
     }
 }
 
