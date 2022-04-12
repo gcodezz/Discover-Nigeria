@@ -7,6 +7,7 @@ import {
 import { useTheme } from '@react-navigation/native'
 import React, { 
     useLayoutEffect, 
+    useCallback,
     useState, 
     useEffect
 } from 'react'
@@ -23,14 +24,14 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
     const { colors } = useTheme()
     const styles = makeStyles(colors)
 
-    const playSound = async() => {
+    const playSound = useCallback(async() => {
         const { sound } = await Audio.Sound.createAsync(
            require('../../assets/music/test.m4a')
         );
         setSound(sound);
 
         await sound.playAsync()
-    }
+    }, [sound])
     
     useEffect(() => {
         return sound

@@ -1,37 +1,32 @@
-import React, { useMemo, useState } from 'react'
+import React from 'react'
 import  { enableScreens } from 'react-native-screens'
 import { useFonts } from 'expo-font'
-import { Provider as PaperProvider } from 'react-native-paper'
 import ReduxThunk from 'redux-thunk'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider as ReduxProvider } from 'react-redux'
+import { composeWithDevTools } from '@redux-devtools/extension'
 
-import AppNavigator from './navigation/AppNavigation'
-import { Context } from './components/Context/Context'
-import { CustomDarkTheme, CustomDefaultTheme } from './themes/themes'
-import { foodReducer, placeReducer } from './store/reducers'
+import { foodReducer, placeReducer, modeReducer } from './store/reducers'
+import StartupScreen from './screens/General/StartupScreen'
 
 enableScreens()
 
 const rootReducer = combineReducers({
   foods: foodReducer,
-  places: placeReducer
+  places: placeReducer,
+  isDarkMode: modeReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>
 
-const store = createStore(rootReducer, applyMiddleware(ReduxThunk))
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(ReduxThunk)
+  )
+)
 
 export default function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
-
-  const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme
-
-  const context = useMemo(() => ({
-    toggleTheme: () => {
-      setIsDarkTheme( isDarkTheme => !isDarkTheme );
-    }
-  }), [])
 
   const [loaded] = useFonts({
     KarlaBold: require('./assets/fonts/Karla-Bold.ttf'),
@@ -45,12 +40,8 @@ export default function App() {
   }
   
   return (
-    <PaperProvider theme={theme}>
-      <ReduxProvider store={store}>
-        <Context.Provider value={context}>
-            <AppNavigator themeValue={theme}/>
-        </Context.Provider>
-      </ReduxProvider>
-    </PaperProvider>
+        <ReduxProvider store={store}>
+          <StartupScreen />
+        </ReduxProvider>
   )
 }

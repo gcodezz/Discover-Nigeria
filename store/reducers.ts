@@ -4,10 +4,12 @@ import {
     SET_PLACES,
     TOGGLE_FOOD_FAVORITE,
     SET_FAV_FOODS,
-    SET_FAV_PLACES
+    SET_FAV_PLACES,
+    TOGGLE_MODE,
+    SET_MODE
 } from './actions'
 
-import { PlaceActionTypes, FoodActionTypes } from './types'
+import { PlaceActionTypes, FoodActionTypes, ModeActionTypes } from './types'
 
 const initialFoodState = {
     favFoods: [],
@@ -87,6 +89,27 @@ export const placeReducer = (state = initialPlaceState, action: PlaceActionTypes
             return {
                 ...state,
                 favPlaces: action.favData
+            }
+        default: 
+            return state
+    }
+}
+
+export const initialModeState = {
+    isDarkMode: false
+}
+
+export const modeReducer = (state = initialModeState, action: ModeActionTypes) => {
+    switch (action.type) {
+        case TOGGLE_MODE:
+            return {
+                ...state,
+                isDarkMode: !state.isDarkMode
+            }
+        case SET_MODE:
+            return {
+                ...state,
+                isDarkMode: action.mode
             }
         default: 
             return state

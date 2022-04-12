@@ -1,5 +1,5 @@
 import { Entypo } from '@expo/vector-icons';
-import React from 'react';
+import React, { memo } from 'react';
 import { useTheme } from '@react-navigation/native'
 
 type Props = {
@@ -17,4 +17,4 @@ const Button = ({ iconName }: Props) => {
   )
 }
 
-export default Button
+export default memo(Button)

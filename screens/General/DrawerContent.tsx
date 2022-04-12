@@ -1,18 +1,19 @@
 import { StyleSheet, View, Text } from 'react-native'
-import React, { useContext } from 'react'
+import React from 'react'
 import { useTheme, Drawer, TouchableRipple, Switch } from 'react-native-paper'
 import {
     DrawerContentScrollView,
     DrawerItemList
 } from '@react-navigation/drawer'
+import { useDispatch } from 'react-redux'
 
-import { Context } from '../../components/Context/Context'
+import { toggleMode } from '../../store/actions'
+
 const DrawerContent = (props: any) => {
+    const dispatch = useDispatch()
     const paperTheme = useTheme()
     
     const { colors } = useTheme()
-
-    const { toggleTheme } = useContext(Context)
 
     return (
         <View style={{ flex: 1 }}>
@@ -21,7 +22,7 @@ const DrawerContent = (props: any) => {
                     <DrawerItemList {...props} />
                 </Drawer.Section>
                 <Drawer.Section title="Preferences">
-                    <TouchableRipple onPress={() => {toggleTheme()}}>
+                    <TouchableRipple onPress={() => dispatch(toggleMode())}>
                         <View style={styles.preference}>
                             <Text style={{ 
                                 fontSize: 18,

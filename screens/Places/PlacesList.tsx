@@ -13,7 +13,7 @@ import { RootState } from '../../App'
 const PlacesList = ({ navigation }: PlaceListScreenProps) => {
   const theme = useTheme()
 
-  const { availablePlaces }: { availablePlaces: Place[] } = useSelector((state: RootState) => state.places)
+  const availablePlaces: Place[] = useSelector((state: RootState) => state.places.availablePlaces)
 
   useEffect(() => {
     navigation.setOptions({

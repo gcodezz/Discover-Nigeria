@@ -5,5 +5,5 @@ interface toggleContext {
 }
 
 export const Context = createContext<toggleContext>({
-    toggleTheme() {}
+    toggleTheme: () => {}
 })

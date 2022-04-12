@@ -7,7 +7,9 @@ import {
     SET_PLACES,
     TOGGLE_FOOD_FAVORITE,
     SET_FAV_FOODS,
-    SET_FAV_PLACES
+    SET_FAV_PLACES,
+    TOGGLE_MODE,
+    SET_MODE
 } from './actions'
 
 export interface SetFoodsActionType {
@@ -33,6 +35,10 @@ export interface SetPlacesActionType {
     places: Place[]
 }
 
+export interface ToggleModeActionType {
+    type: typeof TOGGLE_MODE
+}
+
 export interface TogglePlacesFavActionType {
     type: typeof TOGGLE_PLACE_FAVORITE
     placeId: string
@@ -44,3 +50,15 @@ export interface SetFavPlacesActionType {
 }
 
 export type PlaceActionTypes = SetPlacesActionType | TogglePlacesFavActionType | SetFavPlacesActionType
+
+
+export interface SetModeActionType {
+    type: typeof SET_MODE,
+    mode: boolean
+}
+
+export interface ToggleModeActionType {
+    type: typeof TOGGLE_MODE
+}
+
+export type ModeActionTypes = SetModeActionType | ToggleModeActionType

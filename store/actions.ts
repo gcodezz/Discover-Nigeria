@@ -1,8 +1,20 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Dispatch } from 'react'
 
+import { RootState } from '../App'
 import { foods } from '../data/foods'
 import { places } from '../data/places'
-import { SetFoodsActionType, SetPlacesActionType } from './types'
+
+import { 
+    SetFavFoodsActionType, 
+    SetFavPlacesActionType, 
+    SetFoodsActionType, 
+    SetPlacesActionType, 
+    ToggleFoodFavActionType, 
+    ToggleModeActionType, 
+    TogglePlacesFavActionType,
+    SetModeActionType
+} from './types'
 
 export const TOGGLE_FOOD_FAVORITE = 'TOGGLE_FOOD_FAVORITE'
 export const TOGGLE_PLACE_FAVORITE = 'TOGGLE_PLACE_FAVORITE'
@@ -10,9 +22,11 @@ export const SET_FOODS = 'SET_FOODS'
 export const SET_PLACES = 'SET_PLACES'
 export const SET_FAV_PLACES = 'SET_FAV_PLACES'
 export const SET_FAV_FOODS = 'SET_FAV_FOODS'
+export const TOGGLE_MODE = 'TOGGLE_MODE'
+export const SET_MODE = 'SET_MODE'
 
 export const toggleFoodFavorite = (id: string) => {
-    return async (dispatch: any) => {
+    return async (dispatch: Dispatch<ToggleFoodFavActionType>) => {
         dispatch({
             type: TOGGLE_FOOD_FAVORITE,
             foodId: id
@@ -22,7 +36,7 @@ export const toggleFoodFavorite = (id: string) => {
 }
 
 export const togglePlaceFavorite = (id: string) => {
-    return async (dispatch: any) => {
+    return async (dispatch: Dispatch<TogglePlacesFavActionType>) => {
         dispatch({
             type: TOGGLE_PLACE_FAVORITE,
             placeId: id
@@ -46,7 +60,7 @@ export const fetchPlaces = (): SetPlacesActionType => {
 }
 
 export const fetchFavs = (cat: string) => {
-    return async (dispatch: any) => {
+    return async (dispatch: Dispatch<SetFavFoodsActionType | SetFavPlacesActionType>) => {
         const favData = await AsyncStorage.getItem(`${cat}`)
         let favPlacesOrFoods = JSON.parse(favData)
         if (favPlacesOrFoods == null){
@@ -55,7 +69,7 @@ export const fetchFavs = (cat: string) => {
 
         let favoritePlacesOrFoods = []
         let dataToBeSearch = []
-        if (cat == 'favFoods'){
+        if (cat == 'favFoods') {
             dataToBeSearch = foods
         } else {
             dataToBeSearch = places
@@ -75,6 +89,30 @@ export const fetchFavs = (cat: string) => {
                 favData: favoritePlacesOrFoods
             })
         }
+    }
+}
+
+export const toggleMode = () => {
+    return async (dispatch: Dispatch<ToggleModeActionType>, getState: () => RootState) => {
+        const currMode = !getState().isDarkMode.isDarkMode
+        AsyncStorage.setItem('mode', JSON.stringify(currMode))
+        dispatch({
+            type: TOGGLE_MODE
+        })
+    }
+}
+
+export const fetchMode = () => {
+    return async (dispatch: Dispatch<SetModeActionType>) => {
+        const modeData = await AsyncStorage.getItem('mode')
+        let mode = JSON.parse(modeData)
+        if (mode == null){
+            return
+        }
+        dispatch({
+            type: SET_MODE,
+            mode: mode
+        })
     }
 }
 

@@ -15,13 +15,13 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
   const theme = useTheme()
   const dispatch = useDispatch()
 
-  const { availableFoods }: { availableFoods: Food[] } = useSelector((state: RootState) => state.foods)
+  const availableFoods: Food[] = useSelector((state: RootState) => state.foods.availableFoods)
 
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
         <TouchableCmp 
-          style={{ merginLeft: 5 }}
+          style={{ marginLeft: 5 }}
           onPress={() => navigation.toggleDrawer()}
         >
             <Icon iconName='menu'/>
@@ -30,14 +30,8 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
     })
   }, [navigation])
 
-  useEffect(() => {
-    dispatch(fetchFoods())
-    dispatch(fetchPlaces())
-  }, [dispatch])
-
   const renderGridItem = ({ item }: FoodItem ) => {
     return (
-      
       <FoodGridTile
         title={item.title}
         image={item.image}

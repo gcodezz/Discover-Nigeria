@@ -1,8 +1,8 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { useSelector } from 'react-redux'
 
 import CultureDetailsScreen from '../screens/Culture/CultureDetailsScreen'
 import CultureListScreen from '../screens/Culture/CultureListScreen'
@@ -29,6 +29,8 @@ import {
 } from '../types/navigations'
 import { MusicScreenStackProps } from '../types/props'
 import TouchableCmp from '../components/UI/TouchableBtn'
+import { RootState } from '../App'
+import { CustomDarkTheme, CustomDefaultTheme } from '../themes/themes'
 
 const Drawer = createDrawerNavigator<DrawerParams>()
 
@@ -188,75 +190,73 @@ const PlacesScreenStack = () => {
     )
 }
 
-const AppNavigator = (props: any) => {
+const AppNavigator = () => {
     return (
-        <NavigationContainer theme={props.themeValue}>
-            <Drawer.Navigator
-                screenOptions={{
-                    headerShown: false,
-                    drawerActiveBackgroundColor: '#aa18ea',
-                    drawerActiveTintColor: '#fff',
-                    drawerLabelStyle: {
-                        fontSize: 18,
-                        marginLeft: -20,
-                        fontFamily: 'KarlaMedium'
-                    }
+        <Drawer.Navigator
+            screenOptions={{
+                headerShown: false,
+                drawerActiveBackgroundColor: '#aa18ea',
+                drawerActiveTintColor: '#fff',
+                drawerLabelStyle: {
+                    fontSize: 18,
+                    marginLeft: -20,
+                    fontFamily: 'KarlaMedium'
+                }
+            }}
+            drawerContent={props => <DrawerContent {...props} />}
+        >
+            <Drawer.Screen 
+                name='Foods'
+                component={FoodScreenStack}
+                options={{
+                    headerTitle: 'Food',
+                    drawerIcon: () => (
+                        <Icon iconName="bowl" />
+                    )
                 }}
-                drawerContent={props => <DrawerContent {...props} />}
-            >
-                <Drawer.Screen 
-                    name='Foods'
-                    component={FoodScreenStack}
-                    options={{
-                        headerTitle: 'Food',
-                        drawerIcon: () => (
-                            <Icon iconName="bowl" />
-                        )
-                    }}
-                />
-                <Drawer.Screen 
-                    name='Culture'
-                    component={CultureScreenStack}
-                    options={{
-                        headerTitle: 'Yoruba Culture',
-                        drawerIcon: () => (
-                            <Icon iconName="globe" />
-                        ),
-                    }}
-                />
-                <Drawer.Screen 
-                    name='Music'
-                    component={MusicScreenStack}
-                    options={{
-                        headerTitle: 'Music',
-                        drawerIcon: () => (
-                            <Icon iconName="music" />
-                        ),
-                    }}
-                />
-                <Drawer.Screen 
-                    name='Places'
-                    component={PlacesScreenStack}
-                    options={{
-                        headerTitle: 'Places',
-                        drawerIcon: () => (
-                            <Icon iconName="location" />
-                        ),
-                    }}
-                />
-                <Drawer.Screen 
-                    name='Favorites'
-                    component={FavScreenStack}
-                    options={{
-                        headerTitle: 'My Favorites',
-                        drawerLabel: 'My Favorites',
-                        drawerIcon: () => (
-                            <Icon iconName="heart" />
-                        ),
-                    }}
-                />
-            </Drawer.Navigator>
-        </NavigationContainer>
+            />
+            <Drawer.Screen 
+                name='Culture'
+                component={CultureScreenStack}
+                options={{
+                    headerTitle: 'Yoruba Culture',
+                    drawerIcon: () => (
+                        <Icon iconName="globe" />
+                    ),
+                }}
+            />
+            <Drawer.Screen 
+                name='Music'
+                component={MusicScreenStack}
+                options={{
+                    headerTitle: 'Music',
+                    drawerIcon: () => (
+                        <Icon iconName="music" />
+                    ),
+                }}
+            />
+            <Drawer.Screen 
+                name='Places'
+                component={PlacesScreenStack}
+                options={{
+                    headerTitle: 'Places',
+                    drawerIcon: () => (
+                        <Icon iconName="location" />
+                    ),
+                }}
+            />
+            <Drawer.Screen 
+                name='Favorites'
+                component={FavScreenStack}
+                options={{
+                    headerTitle: 'My Favorites',
+                    drawerLabel: 'My Favorites',
+                    drawerIcon: () => (
+                        <Icon iconName="heart" />
+                    ),
+                }}
+            />
+        </Drawer.Navigator>
     )
 }
 

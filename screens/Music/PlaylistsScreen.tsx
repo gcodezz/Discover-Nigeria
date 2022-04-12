@@ -1,6 +1,5 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { StyleSheet, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { useTheme } from '@react-navigation/native'
 
 import { playlists, Playlist, PlaylistItem } from '../../data/music'
 import GridTile from '../../components/UI/GridTile'
@@ -11,9 +10,6 @@ const PlaylistsScreen = () => {
     link: ''
   }])
 
-  const { colors } = useTheme()
-  const styles = makeStyles(colors)
-
   useEffect(() => {
     setPlaylist(playlists)
   }, [])
@@ -22,7 +18,6 @@ const PlaylistsScreen = () => {
     return (
       <GridTile
         flex={1/2}
-        morePadding={true}
         title={item.id}
         onSelect={() => {
           
@@ -37,7 +32,6 @@ const PlaylistsScreen = () => {
       renderItem={renderGridItem}
       numColumns={2}
       keyExtractor={({ id }) => id}
-      style={styles.main}
     />
   )
 }
@@ -49,8 +43,5 @@ const makeStyles = (colors: any) => StyleSheet.create({
     color: colors.text,
     fontSize: 20,
     fontFamily: 'KarlaMedium'
-  },
-  main: {
-       
   }
 })
