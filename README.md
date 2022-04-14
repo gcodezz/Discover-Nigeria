@@ -60,8 +60,6 @@ The app will consist of:
             ┣ 📜icon.png
             ┗ 📜splash.png
         📦components
-            ┣ 📦Context
-                ┗ 📜Context.ts
             ┣ 📦Food
                 ┗ 📜FoodGridTile.tsx
             ┗ 📦UI
