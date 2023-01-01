@@ -9,24 +9,24 @@ import { fetchFoods, fetchPlaces, fetchMode } from '../../store/actions'
 import { CustomDarkTheme, CustomDefaultTheme } from '../../themes/themes'
 
 const StartupScreen = () => {
-    const isDarkMode: boolean = useSelector((state: RootState) => state.isDarkMode.isDarkMode)
-    let themeValue = isDarkMode === true ? CustomDarkTheme : CustomDefaultTheme
+  const isDarkMode: boolean = useSelector((state: RootState) => state.isDarkMode.isDarkMode)
+  const themeValue = isDarkMode ? CustomDarkTheme : CustomDefaultTheme
 
-    const dispatch = useDispatch()
-    
-    useEffect(() => {
-        dispatch(fetchFoods())
-        dispatch(fetchPlaces())
-        dispatch(fetchMode())
-    }, [])
+  const dispatch = useDispatch()
 
-    return (
+  useEffect(() => {
+    dispatch(fetchFoods())
+    dispatch(fetchPlaces())
+    dispatch(fetchMode())
+  }, [])
+
+  return (
         <PaperProvider theme={themeValue}>
             <NavigationContainer theme={themeValue}>
                 <AppNavigator />
             </NavigationContainer>
         </PaperProvider>
-    )
+  )
 }
 
 export default StartupScreen

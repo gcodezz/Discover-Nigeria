@@ -2,7 +2,6 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { useSelector } from 'react-redux'
 
 import CultureDetailsScreen from '../screens/Culture/CultureDetailsScreen'
 import CultureListScreen from '../screens/Culture/CultureListScreen'
@@ -17,15 +16,15 @@ import FoodFavorite from '../screens/Favorite/FoodFavorite'
 import PlaceFavorite from '../screens/Favorite/PlaceFavorite'
 import DrawerContent from '../screens/General/DrawerContent'
 import Icon from '../components/UI/Icon'
-import { 
-    DrawerParams, 
-    FoodStackParams,
-    CultureStackParams,
-    MusicTabsParams,
-    MusicStackParams,
-    PlaceStackParams,
-    FavoriteTabParams,
-    FavStackParams
+import {
+  DrawerParams,
+  FoodStackParams,
+  CultureStackParams,
+  MusicTabsParams,
+  MusicStackParams,
+  PlaceStackParams,
+  FavoriteTabParams,
+  FavStackParams
 } from '../types/navigations'
 import { MusicScreenStackProps } from '../types/props'
 import TouchableCmp from '../components/UI/TouchableBtn'
@@ -37,25 +36,25 @@ const Drawer = createDrawerNavigator<DrawerParams>()
 const FoodStackNavigator = createStackNavigator<FoodStackParams>()
 
 const FoodScreenStack = () => {
-    return (
+  return (
         <FoodStackNavigator.Navigator>
-            <FoodStackNavigator.Screen 
+            <FoodStackNavigator.Screen
                 name='Food'
                 component={FoodListScreen}
                 options={FoodListScreenOptions}
             />
-            <FoodStackNavigator.Screen 
+            <FoodStackNavigator.Screen
                 name='FoodDetails'
                 component={FoodDetailsScreen}
             />
         </FoodStackNavigator.Navigator>
-    )
+  )
 }
 
 const FavoriteTabs = createMaterialTopTabNavigator<FavoriteTabParams>()
 
 const FavTabStack = () => {
-    return (
+  return (
         <FavoriteTabs.Navigator>
             <FavoriteTabs.Screen
                 name='Foods'
@@ -66,30 +65,30 @@ const FavTabStack = () => {
                 component={PlaceFavorite}
             />
         </FavoriteTabs.Navigator>
-    )
+  )
 }
 
 const FavStackNavigator = createStackNavigator<FavStackParams>()
 
 const FavScreenStack = ({ navigation }: MusicScreenStackProps) => {
-    return (
+  return (
         <FavStackNavigator.Navigator>
-            <FavStackNavigator.Screen 
+            <FavStackNavigator.Screen
                 name='FavoriteStack'
                 component={FavTabStack}
                 options={{
-                    headerTitle: 'My Favorites',
-                    headerLeft: () => (
-                        <TouchableCmp 
+                  headerTitle: 'My Favorites',
+                  headerLeft: () => (
+                        <TouchableCmp
                             style={{ paddingLeft: 5 }}
                             onPress={() => navigation.toggleDrawer()}
                         >
                             <Icon iconName='menu' />
                         </TouchableCmp>
-                    )
+                  )
                 }}
             />
-            <FoodStackNavigator.Screen 
+            <FoodStackNavigator.Screen
                 name='FoodDetails'
                 component={FoodDetailsScreen}
             />
@@ -98,20 +97,19 @@ const FavScreenStack = ({ navigation }: MusicScreenStackProps) => {
                 component={PlaceDetails}
             />
         </FavStackNavigator.Navigator>
-    )
+  )
 }
-
 
 const CultureStackNavigator = createStackNavigator<CultureStackParams>()
 
 const CultureScreenStack = () => {
-    return (
+  return (
         <CultureStackNavigator.Navigator>
             <CultureStackNavigator.Screen
                 name='CultureList'
                 component={CultureListScreen}
                 options={{
-                    headerTitle: 'Culture'
+                  headerTitle: 'Culture'
                 }}
             />
             <CultureStackNavigator.Screen
@@ -119,13 +117,13 @@ const CultureScreenStack = () => {
                 component={CultureDetailsScreen}
             />
         </CultureStackNavigator.Navigator>
-    )
+  )
 }
 
 const MusicTabs = createMaterialTopTabNavigator<MusicTabsParams>()
 
 const MusicTabStack = () => {
-    return (
+  return (
         <MusicTabs.Navigator>
             <MusicTabs.Screen
                 name='Playlist'
@@ -140,46 +138,46 @@ const MusicTabStack = () => {
                 component={YearsScreen}
             />
         </MusicTabs.Navigator>
-    )
+  )
 }
 
 const MusicStackNavigator = createStackNavigator<MusicStackParams>()
 
 const MusicScreenStack = ({ navigation }: MusicScreenStackProps) => {
-    return (
+  return (
         <MusicStackNavigator.Navigator
             screenOptions={{
-                headerLeft: () => (
-                    <TouchableCmp 
+              headerLeft: () => (
+                    <TouchableCmp
                         style={{ paddingLeft: 5 }}
                         onPress={() => navigation.toggleDrawer()}
                     >
                         <Icon iconName='menu' />
                     </TouchableCmp>
-                )
+              )
             }}
         >
-            <MusicStackNavigator.Screen 
+            <MusicStackNavigator.Screen
                 name='Musics'
                 component={MusicTabStack}
                 options={{
-                    headerTitle: 'Music'
+                  headerTitle: 'Music'
                 }}
             />
         </MusicStackNavigator.Navigator>
-    )
+  )
 }
 
 const PlacesStackNavigator = createStackNavigator<PlaceStackParams>()
 
 const PlacesScreenStack = () => {
-    return (
+  return (
         <PlacesStackNavigator.Navigator>
             <PlacesStackNavigator.Screen
                 name='PlaceList'
                 component={PlacesList}
                 options={{
-                    headerTitle: 'Places'
+                  headerTitle: 'Places'
                 }}
             />
             <PlacesStackNavigator.Screen
@@ -187,77 +185,77 @@ const PlacesScreenStack = () => {
                 component={PlaceDetails}
             />
         </PlacesStackNavigator.Navigator>
-    )
+  )
 }
 
 const AppNavigator = () => {
-    return (
+  return (
         <Drawer.Navigator
             screenOptions={{
-                headerShown: false,
-                drawerActiveBackgroundColor: '#aa18ea',
-                drawerActiveTintColor: '#fff',
-                drawerLabelStyle: {
-                    fontSize: 18,
-                    marginLeft: -20,
-                    fontFamily: 'KarlaMedium'
-                }
+              headerShown: false,
+              drawerActiveBackgroundColor: '#aa18ea',
+              drawerActiveTintColor: '#fff',
+              drawerLabelStyle: {
+                fontSize: 18,
+                marginLeft: -20,
+                fontFamily: 'KarlaMedium'
+              }
             }}
             drawerContent={props => <DrawerContent {...props} />}
         >
-            <Drawer.Screen 
+            <Drawer.Screen
                 name='Foods'
                 component={FoodScreenStack}
                 options={{
-                    headerTitle: 'Food',
-                    drawerIcon: () => (
+                  headerTitle: 'Food',
+                  drawerIcon: () => (
                         <Icon iconName="bowl" />
-                    )
+                  )
                 }}
             />
-            <Drawer.Screen 
+            <Drawer.Screen
                 name='Culture'
                 component={CultureScreenStack}
                 options={{
-                    headerTitle: 'Yoruba Culture',
-                    drawerIcon: () => (
+                  headerTitle: 'Yoruba Culture',
+                  drawerIcon: () => (
                         <Icon iconName="globe" />
-                    ),
+                  )
                 }}
             />
-            <Drawer.Screen 
+            <Drawer.Screen
                 name='Music'
                 component={MusicScreenStack}
                 options={{
-                    headerTitle: 'Music',
-                    drawerIcon: () => (
+                  headerTitle: 'Music',
+                  drawerIcon: () => (
                         <Icon iconName="music" />
-                    ),
+                  )
                 }}
             />
-            <Drawer.Screen 
+            <Drawer.Screen
                 name='Places'
                 component={PlacesScreenStack}
                 options={{
-                    headerTitle: 'Places',
-                    drawerIcon: () => (
+                  headerTitle: 'Places',
+                  drawerIcon: () => (
                         <Icon iconName="location" />
-                    ),
+                  )
                 }}
             />
-            <Drawer.Screen 
+            <Drawer.Screen
                 name='Favorites'
                 component={FavScreenStack}
                 options={{
-                    headerTitle: 'My Favorites',
-                    drawerLabel: 'My Favorites',
-                    drawerIcon: () => (
+                  headerTitle: 'My Favorites',
+                  drawerLabel: 'My Favorites',
+                  drawerIcon: () => (
                         <Icon iconName="heart" />
-                    ),
+                  )
                 }}
             />
         </Drawer.Navigator>
-    )
+  )
 }
 
 export default AppNavigator

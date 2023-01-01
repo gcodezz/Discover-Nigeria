@@ -14,13 +14,13 @@ const PlaylistsScreen = () => {
     setPlaylist(playlists)
   }, [])
 
-  const renderGridItem = ({ item }: PlaylistItem ) => {
+  const renderGridItem = ({ item }: PlaylistItem) => {
     return (
       <GridTile
-        flex={1/2}
+        flex={1 / 2}
         title={item.id}
         onSelect={() => {
-          
+
         }}
       />
     )

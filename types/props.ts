@@ -2,7 +2,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
 
-import { 
+import {
   DrawerParams,
   MusicStackParams,
   CultureStackParams,
@@ -11,23 +11,23 @@ import {
 } from './navigations'
 
 type MusicStackNavigationProps = CompositeNavigationProp<
-  StackNavigationProp<MusicStackParams, 'Musics'>,
-  DrawerNavigationProp<DrawerParams>
+StackNavigationProp<MusicStackParams, 'Musics'>,
+DrawerNavigationProp<DrawerParams>
 >
 
 type CultureListScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<CultureStackParams, 'CultureList'>,
-  DrawerNavigationProp<DrawerParams>
+StackNavigationProp<CultureStackParams, 'CultureList'>,
+DrawerNavigationProp<DrawerParams>
 >
 
 type FoodListScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<FoodStackParams, 'Food'>,
-  DrawerNavigationProp<DrawerParams>
+StackNavigationProp<FoodStackParams, 'Food'>,
+DrawerNavigationProp<DrawerParams>
 >
 
 type PlaceScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<PlaceStackParams, 'PlaceList'>,
-  DrawerNavigationProp<DrawerParams>
+StackNavigationProp<PlaceStackParams, 'PlaceList'>,
+DrawerNavigationProp<DrawerParams>
 >
 
 type DrawerContentNavigationProp = DrawerNavigationProp<DrawerParams>

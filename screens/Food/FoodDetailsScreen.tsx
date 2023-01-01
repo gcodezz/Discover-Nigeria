@@ -1,9 +1,9 @@
-import { 
+import {
   StyleSheet,
-  Text, 
+  Text,
   View,
-  ScrollView,
-} from 'react-native';
+  ScrollView
+} from 'react-native'
 import React, { useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
@@ -18,14 +18,14 @@ import { toggleFoodFavorite } from '../../store/actions'
 
 const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
   const { id, title } = route.params
-  const selectedFood : Food | undefined = foods.find(food => food.id == id)
-  const currentFoodIsFav = useSelector((state: RootState) => 
+  const selectedFood: Food | undefined = foods.find(food => food.id == id)
+  const currentFoodIsFav = useSelector((state: RootState) =>
     state.foods.favFoods.some(food => food.id === id)
   )
   const dispatch = useDispatch()
 
   const { colors } = useTheme()
-  
+
   useEffect(() => {
     navigation.setOptions({
       headerTitle: title,
@@ -40,36 +40,36 @@ const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
   }, [selectedFood, currentFoodIsFav])
 
   return (
-    <ScrollView 
+    <ScrollView
       showsVerticalScrollIndicator={false}
       style={styles.container}
     >
       <View style={{ marginHorizontal: '5%' }}>
-        <BigImage uri={selectedFood!.image} />
-        <Text style={{...styles.textStyle, color: colors.text }}>Ingredients</Text>
+        <BigImage uri={selectedFood.image} />
+        <Text style={{ ...styles.textStyle, color: colors.text }}>Ingredients</Text>
         {selectedFood?.ingredients.map((ing, index) => (
           <View key={index} style={{ flexDirection: 'row' }}>
             <Icon iconName="dot-single" />
             <Text style={{ ...styles.miniText, color: colors.text }}>{ing}</Text>
           </View>
         ))}
-        <Text style={{...styles.textStyle, color: colors.text }}>Directions</Text>
+        <Text style={{ ...styles.textStyle, color: colors.text }}>Directions</Text>
         {selectedFood?.directions.map((step, index) => (
           <View key={index} style={{ flexDirection: 'row' }}>
             <Icon iconName="dot-single" />
-            <Text style={{ ...styles.miniText, color: colors.text, marginBottom: 5}}>{step}</Text>
+            <Text style={{ ...styles.miniText, color: colors.text, marginBottom: 5 }}>{step}</Text>
           </View>
         ))}
       </View>
     </ScrollView>
-  );
-};
+  )
+}
 
-export default FoodDetailsScreen;
+export default FoodDetailsScreen
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   textStyle: {
     marginVertical: 10,
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
     marginBottom: 2,
     flexWrap: 'wrap'
   }
-});
+})

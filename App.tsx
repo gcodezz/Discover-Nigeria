@@ -1,5 +1,5 @@
 import React from 'react'
-import  { enableScreens } from 'react-native-screens'
+import { enableScreens } from 'react-native-screens'
 import { useFonts } from 'expo-font'
 import ReduxThunk from 'redux-thunk'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
@@ -26,22 +26,21 @@ const store = createStore(
   )
 )
 
-export default function App() {
-
+export default function App () {
   const [loaded] = useFonts({
     KarlaBold: require('./assets/fonts/Karla-Bold.ttf'),
     KarlaMedium: require('./assets/fonts/Karla-Medium.ttf'),
     KarlaRegular: require('./assets/fonts/Karla-Regular.ttf'),
     KarlaLight: require('./assets/fonts/Karla-Light.ttf')
   })
-  
+
   if (!loaded) {
     return null
   }
-  
+
   return (
-        <ReduxProvider store={store}>
-          <StartupScreen />
-        </ReduxProvider>
+    <ReduxProvider store={store}>
+      <StartupScreen />
+    </ReduxProvider>
   )
 }

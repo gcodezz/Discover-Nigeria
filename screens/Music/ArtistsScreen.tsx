@@ -20,8 +20,8 @@ const ArtistsScreen = () => {
 
   const renderGridItem = ({ item }: MusicianItem) => {
     return (
-      <GridTile 
-          flex={1/2}
+      <GridTile
+          flex={1 / 2}
           title={item.name}
           onSelect={() => {
             Linking.openURL(item.youtubeLink)
@@ -29,9 +29,9 @@ const ArtistsScreen = () => {
       />
     )
   }
-  
+
   return (
-    <FlatList 
+    <FlatList
       data={musiciansData}
       keyExtractor={(item, index) => item.id + index}
       renderItem={({ item }) => (
@@ -39,7 +39,7 @@ const ArtistsScreen = () => {
           <View style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
             <Text style={styles.artistLabel}>{item.id}</Text>
           </View>
-          <FlatList 
+          <FlatList
             data={item.artists}
             renderItem={renderGridItem}
             numColumns={2}
@@ -48,10 +48,10 @@ const ArtistsScreen = () => {
         </>
       )}
     />
-  );
-};
+  )
+}
 
-export default ArtistsScreen;
+export default ArtistsScreen
 
 const makeStyles = (colors: any) => StyleSheet.create({
   artistLabel: {

@@ -18,7 +18,7 @@ const PlacesList = ({ navigation }: PlaceListScreenProps) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <TouchableCmp 
+        <TouchableCmp
           style={{ paddingLeft: 5 }}
           onPress={() => navigation.toggleDrawer()}
         >
@@ -28,21 +28,21 @@ const PlacesList = ({ navigation }: PlaceListScreenProps) => {
     })
   }, [navigation])
 
-    const renderGridItem = ({ item }: PlaceItem ) => {
-      return (
-        
+  const renderGridItem = ({ item }: PlaceItem) => {
+    return (
+
         <PlaceGridTile
           title={item.name}
           image={item.image}
           onSelect={() => {
-            navigation.navigate('PlaceDetails', { 
+            navigation.navigate('PlaceDetails', {
               id: item.id,
               name: item.name
-            });
+            })
           }}
         />
-      )
-    }
+    )
+  }
 
   return (
       <>

@@ -1,18 +1,18 @@
-import { 
+import {
   View,
   StyleSheet,
   Dimensions
-} from 'react-native'; 
-import React from 'react';
+} from 'react-native'
+import React from 'react'
 import { Card } from 'react-native-paper'
 
 import TouchableCmp from '../UI/TouchableBtn'
 
-type Props = {
-    title: string
-    image: string
-    onSelect: () => void
-};
+interface Props {
+  title: string
+  image: string
+  onSelect: () => void
+}
 
 const { height } = Dimensions.get('window')
 
@@ -31,11 +31,11 @@ const FoodGridTile = (props: Props) => {
   )
 }
 
-export default FoodGridTile;
+export default FoodGridTile
 
 const styles = StyleSheet.create({
   gridItem: {
-    flex: 1/2,
+    flex: 1 / 2,
     margin: 10,
     overflow: 'hidden',
     borderRadius: 10,

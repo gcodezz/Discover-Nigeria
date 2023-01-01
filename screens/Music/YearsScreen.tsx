@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useTheme } from '@react-navigation/native'
 
@@ -18,13 +18,13 @@ const YearsScreen = () => {
     setYearData(years)
   }, [])
 
-  const renderGridItem = ({ item }: YearItem ) => {
+  const renderGridItem = ({ item }: YearItem) => {
     return (
       <GridTile
-        flex={1/3}
+        flex={1 / 3}
         title={item.id}
         onSelect={() => {
-          
+
         }}
       />
     )
@@ -37,10 +37,10 @@ const YearsScreen = () => {
       keyExtractor={({ id }) => id}
       style={styles.main}
     />
-  );
-};
+  )
+}
 
-export default YearsScreen;
+export default YearsScreen
 
 const makeStyles = (colors: any) => StyleSheet.create({
   playlistLabel: {
@@ -49,6 +49,6 @@ const makeStyles = (colors: any) => StyleSheet.create({
     fontFamily: 'KarlaMedium'
   },
   main: {
-       
+
   }
 })

@@ -17,7 +17,7 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <TouchableCmp 
+        <TouchableCmp
           style={{ marginLeft: 5 }}
           onPress={() => navigation.toggleDrawer()}
         >
@@ -27,16 +27,16 @@ const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
     })
   }, [navigation])
 
-  const renderGridItem = ({ item }: FoodItem ) => {
+  const renderGridItem = ({ item }: FoodItem) => {
     return (
       <FoodGridTile
         title={item.title}
         image={item.image}
         onSelect={() => {
-          navigation.navigate('FoodDetails', { 
+          navigation.navigate('FoodDetails', {
             id: item.id,
             title: item.title
-          });
+          })
         }}
       />
     )

@@ -8,55 +8,55 @@ import { CultureListScreenProps } from '../../types/props'
 import TouchableCmp from '../../components/UI/TouchableBtn'
 
 const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
-    const [cultureData, setCulture] = useState<Culture[]>([])
+  const [cultureData, setCulture] = useState<Culture[]>([])
 
-    useEffect(() => {
-        setCulture(cultures)
-    }, [])
+  useEffect(() => {
+    setCulture(cultures)
+  }, [])
 
-    useEffect(() => {
-        navigation.setOptions({
-          headerLeft: () => (
-            <TouchableCmp 
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+            <TouchableCmp
               style={{ paddingLeft: 5 }}
               onPress={() => navigation.toggleDrawer()}
             >
                 <Icon iconName='menu' />
             </TouchableCmp>
-        )
-        })
-      }, [navigation])
-      
-    const renderGridItem = ({ item }: CultureListItem ) => {
-        return (
-            <GridTile 
-                flex={1/2}
+      )
+    })
+  }, [navigation])
+
+  const renderGridItem = ({ item }: CultureListItem) => {
+    return (
+            <GridTile
+                flex={1 / 2}
                 title={item.name}
                 onSelect={() => {
-                    navigation.navigate('CultureDetails', {
-                        title: item.name,
-                        details: item.details
-                    })
+                  navigation.navigate('CultureDetails', {
+                    title: item.name,
+                    details: item.details
+                  })
                 }}
             />
-        )
-    }
-    
-    return (
-       <FlatList 
+    )
+  }
+
+  return (
+       <FlatList
             data={cultureData}
             renderItem={renderGridItem}
             numColumns={2}
             keyExtractor={({ id }) => id}
             style={styles.main}
        />
-    )
+  )
 }
 
 export default CultureListScreen
 
 const styles = StyleSheet.create({
-    main: {
-       
-    }
+  main: {
+
+  }
 })
