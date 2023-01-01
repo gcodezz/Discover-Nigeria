@@ -1,34 +1,36 @@
-import { StyleSheet, Text, View, FlatList, Linking } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { useTheme } from '@react-navigation/native'
+import { StyleSheet, Text, View, FlatList, Linking } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { useTheme } from '@react-navigation/native';
 
-import { musicians, General, MusicianItem } from '../../data/music'
-import GridTile from '../../components/UI/GridTile'
+import { musicians, General, MusicianItem } from '../../data/music';
+import GridTile from '../../components/UI/GridTile';
 
 const ArtistsScreen = () => {
-  const [musiciansData, setMusicians] = useState<General[]>([{
-    id: '',
-    artists: []
-  }])
+  const [musiciansData, setMusicians] = useState<General[]>([
+    {
+      id: '',
+      artists: [],
+    },
+  ]);
 
-  const { colors } = useTheme()
-  const styles = makeStyles(colors)
+  const { colors } = useTheme();
+  const styles = makeStyles(colors);
 
   useEffect(() => {
-    setMusicians(musicians)
-  }, [])
+    setMusicians(musicians);
+  }, []);
 
   const renderGridItem = ({ item }: MusicianItem) => {
     return (
       <GridTile
-          flex={1 / 2}
-          title={item.name}
-          onSelect={() => {
-            Linking.openURL(item.youtubeLink)
-          }}
+        flex={1 / 2}
+        title={item.name}
+        onSelect={() => {
+          Linking.openURL(item.youtubeLink);
+        }}
       />
-    )
-  }
+    );
+  };
 
   return (
     <FlatList
@@ -48,15 +50,16 @@ const ArtistsScreen = () => {
         </>
       )}
     />
-  )
-}
+  );
+};
 
-export default ArtistsScreen
+export default ArtistsScreen;
 
-const makeStyles = (colors: any) => StyleSheet.create({
-  artistLabel: {
-    color: colors.text,
-    fontSize: 25,
-    fontFamily: 'KarlaBold'
-  }
-})
+const makeStyles = (colors: any) =>
+  StyleSheet.create({
+    artistLabel: {
+      color: colors.text,
+      fontSize: 25,
+      fontFamily: 'KarlaBold',
+    },
+  });

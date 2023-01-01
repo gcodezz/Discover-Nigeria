@@ -1,16 +1,16 @@
 export interface Musician {
-  id: string
-  name: string
-  youtubeLink: string
+  id: string;
+  name: string;
+  youtubeLink: string;
 }
 
 export interface MusicianItem {
-  item: Musician
+  item: Musician;
 }
 
 export interface General {
-  id: string
-  artists: Musician[]
+  id: string;
+  artists: Musician[];
 }
 
 export const musicians: General[] = [
@@ -20,174 +20,207 @@ export const musicians: General[] = [
       {
         id: '1',
         name: 'Adekunle Gold',
-        youtubeLink: 'https://www.youtube.com/channel/UC3RP_IbJrcP8cIwOC7wRj5g'
-      }, {
+        youtubeLink: 'https://www.youtube.com/channel/UC3RP_IbJrcP8cIwOC7wRj5g',
+      },
+      {
         id: '2',
         name: 'Ajebutter',
-        youtubeLink: 'https://www.youtube.com/channel/UCo1udD5pFZ2y__EdrNv5mlw'
-      }, {
+        youtubeLink: 'https://www.youtube.com/channel/UCo1udD5pFZ2y__EdrNv5mlw',
+      },
+      {
         id: '3',
         name: 'Alpha P',
-        youtubeLink: 'https://www.youtube.com/c/AlphaP/featured'
-      }, {
+        youtubeLink: 'https://www.youtube.com/c/AlphaP/featured',
+      },
+      {
         id: '4',
         name: 'Asake',
-        youtubeLink: 'https://www.youtube.com/channel/UCCjfbcoH0ZYT0r1jScDHJMg'
-      }
-    ]
-  }, {
+        youtubeLink: 'https://www.youtube.com/channel/UCCjfbcoH0ZYT0r1jScDHJMg',
+      },
+    ],
+  },
+  {
     id: 'B',
     artists: [
       {
         id: '5',
         name: 'Bella Shmurda',
-        youtubeLink: 'https://www.youtube.com/channel/UCJrWgnKkJMqIbW4ipOYyrt'
-      }, {
+        youtubeLink: 'https://www.youtube.com/channel/UCJrWgnKkJMqIbW4ipOYyrt',
+      },
+      {
         id: '6',
         name: 'Blaqbonez',
-        youtubeLink: 'https://www.youtube.com/channel/UC0iZ_gqCk22K0jWscf75lhg'
-      }, {
+        youtubeLink: 'https://www.youtube.com/channel/UC0iZ_gqCk22K0jWscf75lhg',
+      },
+      {
         id: '7',
         name: 'BNXN',
-        youtubeLink: 'https://www.youtube.com/channel/UCGCmhbMffOb80CIF8ACTfBA'
-      }, {
+        youtubeLink: 'https://www.youtube.com/channel/UCGCmhbMffOb80CIF8ACTfBA',
+      },
+      {
         id: '8',
         name: 'Burnaboy',
-        youtubeLink: 'https://www.youtube.com/channel/UCEzDdNqNkT-7rSfSGSr1hWg'
-      }
-    ]
-  }, {
+        youtubeLink: 'https://www.youtube.com/channel/UCEzDdNqNkT-7rSfSGSr1hWg',
+      },
+    ],
+  },
+  {
     id: 'C',
     artists: [
       {
         id: '9',
         name: 'CDQ',
-        youtubeLink: ''
-      }, {
+        youtubeLink: '',
+      },
+      {
         id: '10',
         name: 'Cheque',
-        youtubeLink: ''
-      }, {
+        youtubeLink: '',
+      },
+      {
         id: '11',
         name: 'Chinko Ekun',
-        youtubeLink: ''
-      }, {
+        youtubeLink: '',
+      },
+      {
         id: '12',
         name: 'Ckay',
-        youtubeLink: ''
-      }
-    ]
-  }, {
+        youtubeLink: '',
+      },
+    ],
+  },
+  {
     id: 'D',
     artists: [
       {
         id: '13',
         name: 'Dai Verse',
-        youtubeLink: ''
-      }, {
+        youtubeLink: '',
+      },
+      {
         id: '14',
         name: 'Darey',
-        youtubeLink: ''
-      }, {
+        youtubeLink: '',
+      },
+      {
         id: '15',
         name: 'Davido',
-        youtubeLink: ''
-      }, {
+        youtubeLink: '',
+      },
+      {
         id: '16',
         name: 'Dr SID',
-        youtubeLink: ''
-      }, {
+        youtubeLink: '',
+      },
+      {
         id: '17',
         name: 'Dotman',
-        youtubeLink: ''
-      }
-    ]
-  }
-
-]
+        youtubeLink: '',
+      },
+    ],
+  },
+];
 
 export interface Playlist {
-  id: string
-  link: string
+  id: string;
+  link: string;
 }
 
 export interface PlaylistItem {
-  item: Playlist
+  item: Playlist;
 }
 
 export const playlists: Playlist[] = [
   {
     id: 'Live',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: 'Oldies',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: 'Afrobeats',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: 'Diaspora',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: 'Groups',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: 'Local',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: 'Gospel',
-    link: ''
-  }
-]
+    link: '',
+  },
+];
 
 export interface Year {
-  id: string
-  link: string
+  id: string;
+  link: string;
 }
 
 export interface YearItem {
-  item: Year
+  item: Year;
 }
 
 export const years: Playlist[] = [
   {
     id: '2010',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2011',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2012',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2013',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2014',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2015',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2016',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2017',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2018',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2019',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2020',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2021',
-    link: ''
-  }, {
+    link: '',
+  },
+  {
     id: '2022',
-    link: ''
-  }
-]
+    link: '',
+  },
+];

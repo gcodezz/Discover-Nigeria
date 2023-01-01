@@ -1,20 +1,14 @@
-import { Entypo } from '@expo/vector-icons'
-import React, { memo } from 'react'
-import { useTheme } from '@react-navigation/native'
+import { Entypo } from '@expo/vector-icons';
+import React, { memo } from 'react';
+import { useTheme } from '@react-navigation/native';
 
 interface Props {
-  iconName: keyof typeof Entypo.glyphMap
+  iconName: keyof typeof Entypo.glyphMap;
 }
 
 const Button = ({ iconName }: Props) => {
-  const { colors } = useTheme()
-  return (
-    <Entypo
-      name={iconName}
-      size={24}
-      color={colors.text}
-    />
-  )
-}
+  const { colors } = useTheme();
+  return <Entypo name={iconName} size={24} color={colors.text} />;
+};
 
-export default memo(Button)
+export default memo(Button);

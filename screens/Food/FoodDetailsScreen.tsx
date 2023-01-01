@@ -1,86 +1,89 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView
-} from 'react-native'
-import React, { useEffect } from 'react'
-import { useTheme } from '@react-navigation/native'
-import { useSelector, useDispatch } from 'react-redux'
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { useTheme } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { FoodDetailsScreenProps } from '../../types/props'
-import { foods, Food } from '../../data/foods'
-import Icon from '../../components/UI/Icon'
-import BigImage from '../../components/UI/BigImage'
-import TouchableCmp from '../../components/UI/TouchableBtn'
-import { RootState } from '../../App'
-import { toggleFoodFavorite } from '../../store/actions'
+import { FoodDetailsScreenProps } from '../../types/props';
+import { foods, Food } from '../../data/foods';
+import Icon from '../../components/UI/Icon';
+import BigImage from '../../components/UI/BigImage';
+import TouchableCmp from '../../components/UI/TouchableBtn';
+import { RootState } from '../../App';
+import { toggleFoodFavorite } from '../../store/actions';
 
 const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
-  const { id, title } = route.params
-  const selectedFood: Food | undefined = foods.find(food => food.id == id)
+  const { id, title } = route.params;
+  const selectedFood: Food | undefined = foods.find((food) => food.id == id);
   const currentFoodIsFav = useSelector((state: RootState) =>
-    state.foods.favFoods.some(food => food.id === id)
-  )
-  const dispatch = useDispatch()
+    state.foods.favFoods.some((food) => food.id === id),
+  );
+  const dispatch = useDispatch();
 
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   useEffect(() => {
     navigation.setOptions({
       headerTitle: title,
       headerRight: () => (
-        <TouchableCmp style={{ marginRight: 10 }} onPress={() => {
-          dispatch(toggleFoodFavorite(id))
-        }}>
-          <Icon iconName={currentFoodIsFav ? 'heart' : 'heart-outlined'}/>
+        <TouchableCmp
+          style={{ marginRight: 10 }}
+          onPress={() => {
+            dispatch(toggleFoodFavorite(id));
+          }}
+        >
+          <Icon iconName={currentFoodIsFav ? 'heart' : 'heart-outlined'} />
         </TouchableCmp>
-      )
-    })
-  }, [selectedFood, currentFoodIsFav])
+      ),
+    });
+  }, [selectedFood, currentFoodIsFav]);
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={styles.container}
-    >
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <View style={{ marginHorizontal: '5%' }}>
         <BigImage uri={selectedFood.image} />
         <Text style={{ ...styles.textStyle, color: colors.text }}>Ingredients</Text>
         {selectedFood?.ingredients.map((ing, index) => (
           <View key={index} style={{ flexDirection: 'row' }}>
-            <Icon iconName="dot-single" />
+            <Icon iconName='dot-single' />
             <Text style={{ ...styles.miniText, color: colors.text }}>{ing}</Text>
           </View>
         ))}
         <Text style={{ ...styles.textStyle, color: colors.text }}>Directions</Text>
         {selectedFood?.directions.map((step, index) => (
           <View key={index} style={{ flexDirection: 'row' }}>
-            <Icon iconName="dot-single" />
-            <Text style={{ ...styles.miniText, color: colors.text, marginBottom: 5 }}>{step}</Text>
+            <Icon iconName='dot-single' />
+            <Text
+              style={{
+                ...styles.miniText,
+                color: colors.text,
+                marginBottom: 5,
+              }}
+            >
+              {step}
+            </Text>
           </View>
         ))}
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default FoodDetailsScreen
+export default FoodDetailsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   textStyle: {
     marginVertical: 10,
     fontFamily: 'KarlaBold',
-    fontSize: 22
+    fontSize: 22,
   },
   miniText: {
     flex: 1,
     fontSize: 18,
     fontFamily: 'KarlaRegular',
     marginBottom: 2,
-    flexWrap: 'wrap'
-  }
-})
+    flexWrap: 'wrap',
+  },
+});

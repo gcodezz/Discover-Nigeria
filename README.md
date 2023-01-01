@@ -1,6 +1,7 @@
 # Discover Nigeria
 
 # App Details
+
 Discover Nigeria via the language, food and music.
 
 The app will consist of:
@@ -29,15 +30,12 @@ The app will consist of:
 
     └──Drawer
 
-
-
 # Stack
 
     React Native (Expo Framework)
     TypeScript
     Redux - State management
     Cypress - Writing tests
-
 
 # Top-level directory layout
 
@@ -116,16 +114,16 @@ The app will consist of:
         ┣ 📜README.md
         ┗ 📜yarn.lock
 
-
 # Few Screenshots of screens in light and dark modes
-<img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4987.PNG" width="250" height="500"> 
+
+<img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4987.PNG" width="250" height="500">
 <img src="assets/images/IMG_4990.PNG" width="250" height="500">
 <img src="assets/images/IMG_4736.PNG" width="250" height="500"> <img src="assets/images/IMG_4988.PNG" width="250" height="500">
 <img src="assets/images/IMG_4991.PNG" width="250" height="500">
 
 # How to setup project and run locally
 
-### Clone the repository 
+### Clone the repository
 
 ```
 git clone https://github.com/gcodezz/Discover-Nigeria.git
@@ -139,6 +137,7 @@ npm install
 ```
 
 ### Install Expo package
+
 ```
 expo install
 ```

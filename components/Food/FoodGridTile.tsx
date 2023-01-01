@@ -1,20 +1,16 @@
-import {
-  View,
-  StyleSheet,
-  Dimensions
-} from 'react-native'
-import React from 'react'
-import { Card } from 'react-native-paper'
+import { View, StyleSheet, Dimensions } from 'react-native';
+import React from 'react';
+import { Card } from 'react-native-paper';
 
-import TouchableCmp from '../UI/TouchableBtn'
+import TouchableCmp from '../UI/TouchableBtn';
 
 interface Props {
-  title: string
-  image: string
-  onSelect: () => void
+  title: string;
+  image: string;
+  onSelect: () => void;
 }
 
-const { height } = Dimensions.get('window')
+const { height } = Dimensions.get('window');
 
 const FoodGridTile = (props: Props) => {
   return (
@@ -28,10 +24,10 @@ const FoodGridTile = (props: Props) => {
         </Card>
       </TouchableCmp>
     </View>
-  )
-}
+  );
+};
 
-export default FoodGridTile
+export default FoodGridTile;
 
 const styles = StyleSheet.create({
   gridItem: {
@@ -42,20 +38,20 @@ const styles = StyleSheet.create({
     borderColor: '#888',
     borderWidth: 0.5,
     backgroundColor: '#FFF',
-    elevation: 4
+    elevation: 4,
   },
   title: {
     flex: 1,
     fontSize: 18,
     textAlign: 'center',
     fontFamily: 'KarlaBold',
-    color: 'white'
+    color: 'white',
   },
   cardStyle: {
-    height: height * 0.2
+    height: height * 0.2,
   },
   cardCover: {
     flex: 1,
-    height: '80%'
-  }
-})
+    height: '80%',
+  },
+});

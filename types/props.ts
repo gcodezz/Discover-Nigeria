@@ -1,68 +1,68 @@
-import { StackNavigationProp } from '@react-navigation/stack'
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
-import { DrawerNavigationProp } from '@react-navigation/drawer'
+import { StackNavigationProp } from '@react-navigation/stack';
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 
 import {
   DrawerParams,
   MusicStackParams,
   CultureStackParams,
   PlaceStackParams,
-  FoodStackParams
-} from './navigations'
+  FoodStackParams,
+} from './navigations';
 
 type MusicStackNavigationProps = CompositeNavigationProp<
-StackNavigationProp<MusicStackParams, 'Musics'>,
-DrawerNavigationProp<DrawerParams>
->
+  StackNavigationProp<MusicStackParams, 'Musics'>,
+  DrawerNavigationProp<DrawerParams>
+>;
 
 type CultureListScreenNavigationProp = CompositeNavigationProp<
-StackNavigationProp<CultureStackParams, 'CultureList'>,
-DrawerNavigationProp<DrawerParams>
->
+  StackNavigationProp<CultureStackParams, 'CultureList'>,
+  DrawerNavigationProp<DrawerParams>
+>;
 
 type FoodListScreenNavigationProp = CompositeNavigationProp<
-StackNavigationProp<FoodStackParams, 'Food'>,
-DrawerNavigationProp<DrawerParams>
->
+  StackNavigationProp<FoodStackParams, 'Food'>,
+  DrawerNavigationProp<DrawerParams>
+>;
 
 type PlaceScreenNavigationProp = CompositeNavigationProp<
-StackNavigationProp<PlaceStackParams, 'PlaceList'>,
-DrawerNavigationProp<DrawerParams>
->
+  StackNavigationProp<PlaceStackParams, 'PlaceList'>,
+  DrawerNavigationProp<DrawerParams>
+>;
 
-type DrawerContentNavigationProp = DrawerNavigationProp<DrawerParams>
+type DrawerContentNavigationProp = DrawerNavigationProp<DrawerParams>;
 
 export interface FoodDetailsScreenProps {
-  navigation: StackNavigationProp<FoodStackParams, 'FoodDetails'>
-  route: RouteProp<FoodStackParams, 'FoodDetails'>
+  navigation: StackNavigationProp<FoodStackParams, 'FoodDetails'>;
+  route: RouteProp<FoodStackParams, 'FoodDetails'>;
 }
 
 export interface DrawerContentProps {
-  navigation: DrawerContentNavigationProp
+  navigation: DrawerContentNavigationProp;
 }
 
 export interface FoodListScreenProps {
-  navigation: FoodListScreenNavigationProp
+  navigation: FoodListScreenNavigationProp;
 }
 
 export interface PlaceListScreenProps {
-  navigation: PlaceScreenNavigationProp
+  navigation: PlaceScreenNavigationProp;
 }
 
 export interface MusicScreenStackProps {
-  navigation: MusicStackNavigationProps
+  navigation: MusicStackNavigationProps;
 }
 
 export interface CultureListScreenProps {
-  navigation: CultureListScreenNavigationProp
+  navigation: CultureListScreenNavigationProp;
 }
 
 export interface CultureDetailsScreenProps {
-  navigation: StackNavigationProp<CultureStackParams, 'CultureDetails'>
-  route: RouteProp<CultureStackParams, 'CultureDetails'>
+  navigation: StackNavigationProp<CultureStackParams, 'CultureDetails'>;
+  route: RouteProp<CultureStackParams, 'CultureDetails'>;
 }
 
 export interface PlaceDetailsScreenProps {
-  navigation: StackNavigationProp<PlaceStackParams, 'PlaceDetails'>
-  route: RouteProp<PlaceStackParams, 'PlaceDetails'>
+  navigation: StackNavigationProp<PlaceStackParams, 'PlaceDetails'>;
+  route: RouteProp<PlaceStackParams, 'PlaceDetails'>;
 }

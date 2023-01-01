@@ -1,11 +1,8 @@
 import {
   DefaultTheme as NavigationDefaultTheme,
-  DarkTheme as NavigationDarkTheme
-} from '@react-navigation/native'
-import {
-  DarkTheme as PaperDarkTheme,
-  DefaultTheme as PaperDefaultTheme
-} from 'react-native-paper'
+  DarkTheme as NavigationDarkTheme,
+} from '@react-navigation/native';
+import { DarkTheme as PaperDarkTheme, DefaultTheme as PaperDefaultTheme } from 'react-native-paper';
 
 export const CustomDefaultTheme = {
   ...NavigationDefaultTheme,
@@ -18,9 +15,9 @@ export const CustomDefaultTheme = {
     otherBackground: 'white',
     modal: '#e6e6e6',
     modalText: 'black',
-    modalBorderColor: '#f2f2f2'
-  }
-}
+    modalBorderColor: '#f2f2f2',
+  },
+};
 
 export const CustomDarkTheme = {
   ...NavigationDarkTheme,
@@ -33,6 +30,6 @@ export const CustomDarkTheme = {
     otherBackground: 'black',
     modal: '#595959',
     modalText: 'white',
-    modalBorderColor: null
-  }
-}
+    modalBorderColor: null,
+  },
+};
