@@ -117,7 +117,7 @@ The app will consist of:
 # Few Screenshots of screens in light and dark modes
 
 <img src="assets/images/IMG_4733.PNG" width="250" height="500"> <img src="assets/images/IMG_4987.PNG" width="250" height="500">
-<img src="assets/images/IMG_4736.PNG" width="250" height="500"> <img src="assets/images/IMG_4988.PNG" width="250" height="500">
+<img src="assets/images/IMG_4736.PNG" width="250" height="500"> 
 
 # How to setup project and run locally
 
