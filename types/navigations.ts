@@ -1,6 +1,6 @@
 import { Culture } from '../data/culture';
 
-export interface DrawerParams {
+export type DrawerParams = {
   Culture: undefined;
   Foods: undefined;
   Music: undefined;
@@ -8,7 +8,7 @@ export interface DrawerParams {
   Favorites: undefined;
 }
 
-export interface FoodStackParams {
+export type FoodStackParams = {
   Food: undefined;
   FoodDetails: {
     id: string;
@@ -16,7 +16,7 @@ export interface FoodStackParams {
   };
 }
 
-export interface CultureStackParams {
+export type CultureStackParams = {
   CultureList: undefined;
   CultureDetails: {
     title: string;
@@ -24,7 +24,7 @@ export interface CultureStackParams {
   };
 }
 
-export interface PlaceStackParams {
+export type PlaceStackParams = {
   PlaceList: undefined;
   PlaceDetails: {
     id: string;
@@ -32,21 +32,21 @@ export interface PlaceStackParams {
   };
 }
 
-export interface MusicTabsParams {
+export type MusicTabsParams = {
   Playlist: undefined;
   Artists: undefined;
   Year: undefined;
 }
 
-export interface MusicStackParams {
+export type MusicStackParams = {
   Musics: undefined;
 }
 
-export interface FavStackParams {
+export type FavStackParams = {
   FavoriteStack: undefined;
 }
 
-export interface FavoriteTabParams {
+export type FavoriteTabParams = {
   Foods: undefined;
   Places: undefined;
 }

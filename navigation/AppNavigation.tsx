@@ -30,8 +30,6 @@ import {
 } from '../types/navigations';
 import { MusicScreenStackProps } from '../types/props';
 import TouchableCmp from '../components/UI/TouchableBtn';
-import { RootState } from '../App';
-import { CustomDarkTheme, CustomDefaultTheme } from '../themes/themes';
 
 const Drawer = createDrawerNavigator<DrawerParams>();
 
