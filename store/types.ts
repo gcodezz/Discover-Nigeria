@@ -58,8 +58,4 @@ export interface SetModeActionType {
   mode: boolean;
 }
 
-export interface ToggleModeActionType {
-  type: typeof TOGGLE_MODE;
-}
-
 export type ModeActionTypes = SetModeActionType | ToggleModeActionType;

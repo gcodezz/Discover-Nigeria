@@ -16,7 +16,7 @@ const initialFoodState = {
   availableFoods: [],
 };
 
-export const foodReducer = (state = initialFoodState, action: FoodActionTypes) => {
+export const foodReducer = (action: FoodActionTypes, state = initialFoodState) => {
   switch (action.type) {
     case SET_FOODS:
       return {
@@ -33,10 +33,10 @@ export const foodReducer = (state = initialFoodState, action: FoodActionTypes) =
           favFoods: updatedFavFoods,
         };
       } else {
-        const food = state.availableFoods.find((food) => food.id === action.foodId);
+        const foodFound = state.availableFoods.find((food) => food.id === action.foodId);
         return {
           ...state,
-          favFoods: state.favFoods.concat(food),
+          favFoods: state.favFoods.concat(foodFound),
         };
       }
     case SET_FAV_FOODS:
@@ -54,7 +54,7 @@ const initialPlaceState = {
   availablePlaces: [],
 };
 
-export const placeReducer = (state = initialPlaceState, action: PlaceActionTypes) => {
+export const placeReducer = (action: PlaceActionTypes, state = initialPlaceState) => {
   switch (action.type) {
     case SET_PLACES:
       return {
@@ -71,10 +71,10 @@ export const placeReducer = (state = initialPlaceState, action: PlaceActionTypes
           favPlaces: updatedFavPlaces,
         };
       } else {
-        const place = state.availablePlaces.find((place) => place.id === action.placeId);
+        const placeFound = state.availablePlaces.find((place) => place.id === action.placeId);
         return {
           ...state,
-          favPlaces: state.favPlaces.concat(place),
+          favPlaces: state.favPlaces.concat(placeFound),
         };
       }
     case SET_FAV_PLACES:
@@ -91,7 +91,7 @@ export const initialModeState = {
   isDarkMode: false,
 };
 
-export const modeReducer = (state = initialModeState, action: ModeActionTypes) => {
+export const modeReducer = (action: ModeActionTypes, state = initialModeState) => {
   switch (action.type) {
     case TOGGLE_MODE:
       return {

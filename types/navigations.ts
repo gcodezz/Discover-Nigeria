@@ -6,7 +6,7 @@ export type DrawerParams = {
   Music: undefined;
   Places: undefined;
   Favorites: undefined;
-}
+};
 
 export type FoodStackParams = {
   Food: undefined;
@@ -14,7 +14,7 @@ export type FoodStackParams = {
     id: string;
     title: string;
   };
-}
+};
 
 export type CultureStackParams = {
   CultureList: undefined;
@@ -22,7 +22,7 @@ export type CultureStackParams = {
     title: string;
     details: Culture['details'];
   };
-}
+};
 
 export type PlaceStackParams = {
   PlaceList: undefined;
@@ -30,23 +30,23 @@ export type PlaceStackParams = {
     id: string;
     name: string;
   };
-}
+};
 
 export type MusicTabsParams = {
   Playlist: undefined;
   Artists: undefined;
   Year: undefined;
-}
+};
 
 export type MusicStackParams = {
   Musics: undefined;
-}
+};
 
 export type FavStackParams = {
   FavoriteStack: undefined;
-}
+};
 
 export type FavoriteTabParams = {
   Foods: undefined;
   Places: undefined;
-}
+};

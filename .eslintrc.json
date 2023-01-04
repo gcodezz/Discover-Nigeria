@@ -7,22 +7,9 @@
   },
   "extends": [
     "@react-native-community",
-    "airbnb-typescript",
-    "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/react"
-  ],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-      ],
-      "parserOptions": {
-        "project": ["./tsconfig.json"]
-      }
-    }
+    "plugin:import/recommended",
+    "airbnb-typescript/base",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
