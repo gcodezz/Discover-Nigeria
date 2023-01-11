@@ -9,14 +9,19 @@ import BigImage from '../../components/UI/BigImage';
 import TouchableCmp from '../../components/UI/TouchableBtn';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../App';
-import { togglePlaceFavorite } from '../../store/actions';
+import { togglePlaceFavorite } from '../../store/placeSlice';
 
 const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
   const { id, name } = route.params;
   const selectedPlace: Place | undefined = places.find((place) => place.id == id);
-  const currentPlaceIsFav = useSelector((state: RootState) =>
-    state.places.favPlaces.some((place) => place.id === id),
-  );
+  // const currentPlaceIsFav = useSelector((state: RootState) =>
+  //   state.places.favPlaces.some((place) => place.id === id),
+  // );
+  const currentPlaceIsFav = useSelector((state) => {
+    console.log('favourite places', state.places.favPlaces);
+    return state.places.favPlaces.some((place) => place.id === id);
+  });
+  console.log('current favourite', currentPlaceIsFav);
 
   const dispatch = useDispatch();
 
@@ -25,6 +30,7 @@ const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
   useEffect(() => {
     navigation.setOptions({
       headerTitle: name,
+      // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => (
         <TouchableCmp
           style={{ paddingRight: 10 }}
@@ -36,7 +42,7 @@ const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
         </TouchableCmp>
       ),
     });
-  }, [selectedPlace, currentPlaceIsFav]);
+  }, [selectedPlace, currentPlaceIsFav, navigation, name, dispatch, id]);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>

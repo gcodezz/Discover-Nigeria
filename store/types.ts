@@ -9,7 +9,6 @@ import {
   SET_FAV_FOODS,
   SET_FAV_PLACES,
   TOGGLE_MODE,
-  SET_MODE,
 } from './actions';
 
 export interface SetFoodsActionType {
@@ -18,8 +17,8 @@ export interface SetFoodsActionType {
 }
 
 export interface ToggleFoodFavActionType {
-  type: typeof TOGGLE_FOOD_FAVORITE;
-  foodId: string;
+  type: 'places/togglePlaceFav';
+  payload: string;
 }
 
 export interface SetFavFoodsActionType {
@@ -39,8 +38,8 @@ export interface ToggleModeActionType {
 }
 
 export interface TogglePlacesFavActionType {
-  type: typeof TOGGLE_PLACE_FAVORITE;
-  placeId: string;
+  type: 'places/togglePlaceFav';
+  payload: string;
 }
 
 export interface SetFavPlacesActionType {
@@ -54,8 +53,8 @@ export type PlaceActionTypes =
   | SetFavPlacesActionType;
 
 export interface SetModeActionType {
-  type: typeof SET_MODE;
-  mode: boolean;
+  type: 'mode/fetchMode';
+  payload: boolean;
 }
 
 export type ModeActionTypes = SetModeActionType | ToggleModeActionType;

@@ -24,6 +24,7 @@ const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
   useEffect(() => {
     navigation.setOptions({
       headerTitle: title,
+      // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => (
         <TouchableCmp
           style={{ marginRight: 10 }}

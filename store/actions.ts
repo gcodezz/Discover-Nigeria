@@ -45,19 +45,19 @@ export const togglePlaceFavorite = (id: string) => {
   };
 };
 
-export const fetchFoods = (): SetFoodsActionType => {
-  return {
-    type: SET_FOODS,
-    foods,
-  };
-};
+// export const fetchFoods = (): SetFoodsActionType => {
+//   return {
+//     type: SET_FOODS,
+//     foods,
+//   };
+// };
 
-export const fetchPlaces = (): SetPlacesActionType => {
-  return {
-    type: SET_PLACES,
-    places,
-  };
-};
+// export const fetchPlaces = (): SetPlacesActionType => {
+//   return {
+//     type: SET_PLACES,
+//     places,
+//   };
+// };
 
 export const fetchFavs = (cat: string) => {
   return async (dispatch: Dispatch<SetFavFoodsActionType | SetFavPlacesActionType>) => {
@@ -92,29 +92,29 @@ export const fetchFavs = (cat: string) => {
   };
 };
 
-export const toggleMode = () => {
-  return async (dispatch: Dispatch<ToggleModeActionType>, getState: () => RootState) => {
-    const currMode = !getState().isDarkMode.isDarkMode;
-    AsyncStorage.setItem('mode', JSON.stringify(currMode));
-    dispatch({
-      type: TOGGLE_MODE,
-    });
-  };
-};
+// export const toggleMode = () => {
+//   return (dispatch: Dispatch<ToggleModeActionType>, getState: () => RootState) => {
+//     const currMode = !getState().isDarkMode.isDarkMode;
+//     AsyncStorage.setItem('mode', JSON.stringify(currMode));
+//     dispatch({
+//       type: TOGGLE_MODE,
+//     });
+//   };
+// };
 
-export const fetchMode = () => {
-  return async (dispatch: Dispatch<SetModeActionType>) => {
-    const modeData = await AsyncStorage.getItem('mode');
-    const mode = JSON.parse(modeData);
-    if (mode == null) {
-      return;
-    }
-    dispatch({
-      type: SET_MODE,
-      mode,
-    });
-  };
-};
+// export const fetchMode = () => {
+//   return async (dispatch: Dispatch<SetModeActionType>) => {
+//     const modeData = await AsyncStorage.getItem('mode');
+//     const mode = JSON.parse(modeData);
+//     if (mode == null) {
+//       return;
+//     }
+//     dispatch({
+//       type: SET_MODE,
+//       mode,
+//     });
+//   };
+// };
 
 const editStorage = async (id: string, cat: string) => {
   const favData = await AsyncStorage.getItem(`${cat}`);

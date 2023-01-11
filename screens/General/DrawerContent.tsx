@@ -4,7 +4,7 @@ import { useTheme, Drawer, TouchableRipple, Switch } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { useDispatch } from 'react-redux';
 
-import { toggleMode } from '../../store/actions';
+import { toggleMode } from '../../store/modeSlice';
 
 const DrawerContent = (props: any) => {
   const dispatch = useDispatch();

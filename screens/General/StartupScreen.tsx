@@ -4,21 +4,24 @@ import AppNavigator from '../../navigation/AppNavigation';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { RootState } from '../../App';
-import { fetchFoods, fetchPlaces, fetchMode } from '../../store/actions';
+import { fetchFoods } from '../../store/foodSlice';
+import { fetchPlaces } from '../../store/placeSlice';
+import { getModeFromStorage } from '../../store/modeSlice';
 import { CustomDarkTheme, CustomDefaultTheme } from '../../themes/themes';
+import { foods } from '../../data/foods';
+import { places } from '../../data/places';
 
 const StartupScreen = () => {
-  const isDarkMode: boolean = useSelector((state: RootState) => state.isDarkMode.isDarkMode);
+  const isDarkMode: boolean = useSelector((state: any) => state.isDarkMode.isDarkMode);
   const themeValue = isDarkMode ? CustomDarkTheme : CustomDefaultTheme;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchFoods());
-    dispatch(fetchPlaces());
-    dispatch(fetchMode());
-  }, []);
+    dispatch(fetchFoods(foods));
+    dispatch(fetchPlaces(places));
+    dispatch(getModeFromStorage());
+  }, [dispatch]);
 
   return (
     <PaperProvider theme={themeValue}>

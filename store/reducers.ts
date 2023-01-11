@@ -16,6 +16,8 @@ const initialFoodState = {
   availableFoods: [],
 };
 
+console.log('Loading foods');
+
 export const foodReducer = (action: FoodActionTypes, state = initialFoodState) => {
   switch (action.type) {
     case SET_FOODS:

@@ -1,4 +1,4 @@
-import { FlatList, StatusBar } from 'react-native';
+import { FlatList, StatusBar, StyleSheet } from 'react-native';
 import React, { useEffect } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
@@ -8,16 +8,17 @@ import FoodGridTile from '../../components/Food/FoodGridTile';
 import Icon from '../../components/UI/Icon';
 import { FoodListScreenProps } from '../../types/props';
 import TouchableCmp from '../../components/UI/TouchableBtn';
-import { RootState } from '../../App';
+// import { RootState } from '../../App';
 
 const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
   const theme = useTheme();
-  const availableFoods: Food[] = useSelector((state: RootState) => state.foods.availableFoods);
+  const availableFoods: Food[] = useSelector((state: any) => state.foods.availableFoods);
 
   useEffect(() => {
     navigation.setOptions({
+      // eslint-disable-next-line react/no-unstable-nested-components
       headerLeft: () => (
-        <TouchableCmp style={{ marginLeft: 5 }} onPress={() => navigation.toggleDrawer()}>
+        <TouchableCmp style={styles.header} onPress={() => navigation.toggleDrawer()}>
           <Icon iconName='menu' />
         </TouchableCmp>
       ),
@@ -59,3 +60,9 @@ export const screenOptions = () => {
 };
 
 export default FoodListScreen;
+
+const styles = StyleSheet.create({
+  header: {
+    marginLeft: 5,
+  },
+});
