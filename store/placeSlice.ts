@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createSlice, Dispatch } from '@reduxjs/toolkit';
+import { AppThunk } from '../App';
 import { TogglePlacesFavActionType } from './types';
 
 const initialState = {
@@ -15,7 +16,6 @@ const placeSlice = createSlice({
       state.availablePlaces = action.payload;
     },
     togglePlaceFav: (state, action) => {
-      console.log(action.payload);
       const existingIndex = state.favPlaces.findIndex((place) => place.id === action.payload);
       if (existingIndex >= 0) {
         const updatedFavPlaces = [...state.favPlaces];
@@ -32,7 +32,8 @@ const placeSlice = createSlice({
 export const { fetchPlaces, togglePlaceFav } = placeSlice.actions;
 
 export const togglePlaceFavorite =
-  (id: string) => async (dispatch: Dispatch<TogglePlacesFavActionType>) => {
+  (id: string): AppThunk =>
+  async (dispatch: Dispatch<TogglePlacesFavActionType>) => {
     dispatch(togglePlaceFav(id));
     await editStorage(id, 'favPlaces');
   };

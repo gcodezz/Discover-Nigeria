@@ -13,7 +13,7 @@ const DrawerContent = (props: any) => {
   const { colors } = useTheme();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <DrawerContentScrollView {...props}>
         <Drawer.Section>
           <DrawerItemList {...props} />
@@ -22,6 +22,7 @@ const DrawerContent = (props: any) => {
           <TouchableRipple onPress={() => dispatch(toggleMode())}>
             <View style={styles.preference}>
               <Text
+                // eslint-disable-next-line react-native/no-inline-styles
                 style={{
                   fontSize: 18,
                   fontFamily: 'KarlaMedium',
@@ -49,5 +50,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 12,
     paddingHorizontal: 16,
+  },
+  container: {
+    flex: 1,
   },
 });

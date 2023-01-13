@@ -1,4 +1,4 @@
-import { FlatList, StatusBar } from 'react-native';
+import { FlatList, StatusBar, StyleSheet } from 'react-native';
 import React, { useEffect } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
@@ -17,8 +17,9 @@ const PlacesList = ({ navigation }: PlaceListScreenProps) => {
 
   useEffect(() => {
     navigation.setOptions({
+      // eslint-disable-next-line react/no-unstable-nested-components
       headerLeft: () => (
-        <TouchableCmp style={{ paddingLeft: 5 }} onPress={() => navigation.toggleDrawer()}>
+        <TouchableCmp style={styles.headerLeft} onPress={() => navigation.toggleDrawer()}>
           <Icon iconName='menu' />
         </TouchableCmp>
       ),
@@ -54,3 +55,9 @@ const PlacesList = ({ navigation }: PlaceListScreenProps) => {
 };
 
 export default PlacesList;
+
+const styles = StyleSheet.create({
+  headerLeft: {
+    paddingLeft: 5,
+  },
+});

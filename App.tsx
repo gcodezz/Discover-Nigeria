@@ -1,7 +1,7 @@
 import React from 'react';
 import { enableScreens } from 'react-native-screens';
 import { useFonts } from 'expo-font';
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import modeReducer from './store/modeSlice';
@@ -11,13 +11,23 @@ import StartupScreen from './screens/General/StartupScreen';
 
 enableScreens();
 
-const store = configureStore({
+const makeStore = configureStore({
   reducer: {
     foods: foodReducer,
     places: placeReducer,
     isDarkMode: modeReducer,
   },
 });
+
+export type RootState = ReturnType<typeof makeStore.getState>;
+export type AppDispatch = typeof makeStore.dispatch;
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
 
 export default function App() {
   const [loaded] = useFonts({
@@ -32,7 +42,7 @@ export default function App() {
   }
 
   return (
-    <ReduxProvider store={store}>
+    <ReduxProvider store={makeStore}>
       <StartupScreen />
     </ReduxProvider>
   );

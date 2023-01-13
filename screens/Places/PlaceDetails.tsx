@@ -8,22 +8,17 @@ import Icon from '../../components/UI/Icon';
 import BigImage from '../../components/UI/BigImage';
 import TouchableCmp from '../../components/UI/TouchableBtn';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../App';
+import { AppDispatch, RootState } from '../../App';
 import { togglePlaceFavorite } from '../../store/placeSlice';
 
 const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
   const { id, name } = route.params;
   const selectedPlace: Place | undefined = places.find((place) => place.id == id);
-  // const currentPlaceIsFav = useSelector((state: RootState) =>
-  //   state.places.favPlaces.some((place) => place.id === id),
-  // );
-  const currentPlaceIsFav = useSelector((state) => {
-    console.log('favourite places', state.places.favPlaces);
-    return state.places.favPlaces.some((place) => place.id === id);
-  });
-  console.log('current favourite', currentPlaceIsFav);
+  const currentPlaceIsFav = useSelector((state: RootState) =>
+    state.places.favPlaces.some((place) => place.id === id),
+  );
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const { colors } = useTheme();
 
@@ -33,7 +28,7 @@ const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
       // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => (
         <TouchableCmp
-          style={{ paddingRight: 10 }}
+          style={styles.headerRight}
           onPress={() => {
             dispatch(togglePlaceFavorite(id));
           }}
@@ -46,19 +41,19 @@ const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-      <View style={{ marginHorizontal: '5%' }}>
+      <View style={styles.wrapper}>
         <BigImage uri={selectedPlace.image} />
 
         <TouchableCmp
           onPress={() => {
             Linking.openURL(selectedPlace.map);
           }}
-          style={{ marginVertical: 10 }}
+          style={styles.map}
         >
-          <Text style={{ color: '#aa18ea', fontSize: 16 }}>View on map</Text>
+          <Text style={styles.mapText}>View on map</Text>
         </TouchableCmp>
 
-        <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+        <View style={styles.details}>
           <Text style={{ ...styles.miniText, color: colors.text }}>{selectedPlace.details}</Text>
         </View>
       </View>
@@ -72,9 +67,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  wrapper: {
+    marginHorizontal: '5%',
+  },
   miniText: {
     fontSize: 18,
     fontFamily: 'KarlaRegular',
     flexWrap: 'wrap',
+  },
+  // eslint-disable-next-line react-native/no-color-literals
+  mapText: {
+    color: '#aa18ea',
+    fontSize: 16,
+  },
+  details: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  map: {
+    marginVertical: 10,
+  },
+  headerRight: {
+    paddingRight: 10,
   },
 });

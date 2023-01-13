@@ -20,7 +20,7 @@ const StartupScreen = () => {
   useEffect(() => {
     dispatch(fetchFoods(foods));
     dispatch(fetchPlaces(places));
-    dispatch(getModeFromStorage());
+    getModeFromStorage();
   }, [dispatch]);
 
   return (
