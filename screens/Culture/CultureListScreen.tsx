@@ -16,8 +16,9 @@ const CultureListScreen = ({ navigation }: CultureListScreenProps) => {
 
   useEffect(() => {
     navigation.setOptions({
+      // eslint-disable-next-line react/no-unstable-nested-components
       headerLeft: () => (
-        <TouchableCmp style={{ paddingLeft: 5 }} onPress={() => navigation.toggleDrawer()}>
+        <TouchableCmp style={styles.headerLeft} onPress={() => navigation.toggleDrawer()}>
           <Icon iconName='menu' />
         </TouchableCmp>
       ),
@@ -54,4 +55,7 @@ export default CultureListScreen;
 
 const styles = StyleSheet.create({
   main: {},
+  headerLeft: {
+    paddingLeft: 5,
+  },
 });

@@ -8,16 +8,17 @@ import { foods, Food } from '../../data/foods';
 import Icon from '../../components/UI/Icon';
 import BigImage from '../../components/UI/BigImage';
 import TouchableCmp from '../../components/UI/TouchableBtn';
-import { RootState } from '../../App';
-import { toggleFoodFavorite } from '../../store/actions';
+import { AppDispatch, RootState } from '../../App';
+import { toggleFoodFavorite } from '../../store/foodSlice';
 
 const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
   const { id, title } = route.params;
-  const selectedFood: Food | undefined = foods.find((food) => food.id == id);
-  const currentFoodIsFav = useSelector((state: RootState) =>
-    state.foods.favFoods.some((food) => food.id === id),
-  );
-  const dispatch = useDispatch();
+  const selectedFood: Food | undefined = foods.find((food) => food.id === id);
+  const favFoods: Food[] = useSelector((state: RootState) => state.foods.favFoods);
+
+  const currentFoodIsFav = favFoods.some((food) => food.id.toString() === id.toString());
+
+  const dispatch: AppDispatch = useDispatch();
 
   const { colors } = useTheme();
 
@@ -36,7 +37,7 @@ const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
         </TouchableCmp>
       ),
     });
-  }, [selectedFood, currentFoodIsFav]);
+  }, [selectedFood, currentFoodIsFav, navigation, title, dispatch, id]);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>

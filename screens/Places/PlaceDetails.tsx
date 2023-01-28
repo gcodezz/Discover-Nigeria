@@ -13,10 +13,10 @@ import { togglePlaceFavorite } from '../../store/placeSlice';
 
 const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {
   const { id, name } = route.params;
-  const selectedPlace: Place | undefined = places.find((place) => place.id == id);
-  const currentPlaceIsFav = useSelector((state: RootState) =>
-    state.places.favPlaces.some((place) => place.id === id),
-  );
+  const selectedPlace: Place | undefined = places.find((place) => place.id === id);
+  const favPlaces: Place[] = useSelector((state: RootState) => state.places.favPlaces);
+
+  const currentPlaceIsFav = favPlaces.some((place) => place.id.toString() === id.toString());
 
   const dispatch: AppDispatch = useDispatch();
 

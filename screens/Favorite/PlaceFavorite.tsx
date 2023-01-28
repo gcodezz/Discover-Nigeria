@@ -5,16 +5,16 @@ import { useTheme } from '@react-navigation/native';
 
 import { PlaceItem, Place } from '../../data/places';
 import GridTile from '../../components/Food/FoodGridTile';
-import { RootState } from '../../App';
+import { AppDispatch, RootState } from '../../App';
 import { PlaceListScreenProps } from '../../types/props';
-import { fetchFavs } from '../../store/actions';
+import { fetchPlaceFavs } from '../../store/placeSlice';
 
 const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
   const { favPlaces }: { favPlaces: Place[] } = useSelector((state: RootState) => state.places);
 
   const { colors } = useTheme();
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const renderGridItem = ({ item }: PlaceItem) => {
     return (
@@ -32,12 +32,12 @@ const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
   };
 
   const loadFavPlaces = useCallback(async () => {
-    await dispatch(fetchFavs('favPlaces'));
+    await dispatch(fetchPlaceFavs());
   }, [dispatch]);
 
   useEffect(() => {
     loadFavPlaces();
-  }, []);
+  }, [loadFavPlaces]);
 
   return (
     <>

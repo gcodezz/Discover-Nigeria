@@ -1,7 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createSlice, Dispatch } from '@reduxjs/toolkit';
 import { AppThunk } from '../App';
-import { TogglePlacesFavActionType } from './types';
+import { places } from '../data/places';
+import { SetFavPlacesActionType, TogglePlacesFavActionType } from './types';
+import { editStorage } from './helpers';
 
 const initialState = {
   favPlaces: [],
@@ -26,10 +28,13 @@ const placeSlice = createSlice({
         state.favPlaces = state.favPlaces.concat(placeFound);
       }
     },
+    setFavPlaces: (state, action) => {
+      state.favPlaces = action.payload;
+    },
   },
 });
 
-export const { fetchPlaces, togglePlaceFav } = placeSlice.actions;
+export const { fetchPlaces, togglePlaceFav, setFavPlaces } = placeSlice.actions;
 
 export const togglePlaceFavorite =
   (id: string): AppThunk =>
@@ -38,21 +43,21 @@ export const togglePlaceFavorite =
     await editStorage(id, 'favPlaces');
   };
 
-export const editStorage = async (id: string, cat: string) => {
-  const favData = await AsyncStorage.getItem(`${cat}`);
-  const favs = JSON.parse(favData);
-  console.log(favs);
-  if (favs == null) {
-    AsyncStorage.setItem(`${cat}`, JSON.stringify([id]));
-  } else {
-    const existingIndex = favs.findIndex((dataId: string) => dataId === id);
-    if (existingIndex >= 0) {
-      favs.splice(existingIndex, 1);
-    } else {
-      favs.push(id);
+export const fetchPlaceFavs = () => {
+  return async (dispatch: Dispatch<SetFavPlacesActionType>) => {
+    const favPlacesData = await AsyncStorage.getItem('favPlaces');
+    const favPlacesDataJson = JSON.parse(favPlacesData);
+    if (favPlacesDataJson == null) {
+      return;
     }
-    AsyncStorage.setItem(`${cat}`, JSON.stringify(favs));
-  }
+
+    const favoritePlaces = [];
+    for (const id of favPlacesDataJson) {
+      const favPlace = places.find((place) => place.id === id);
+      favoritePlaces.push(favPlace);
+    }
+    dispatch(setFavPlaces(favoritePlaces));
+  };
 };
 
 export default placeSlice.reducer;
