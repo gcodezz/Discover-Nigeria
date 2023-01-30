@@ -1,6 +1,7 @@
 import { Text, Button, View, StyleSheet } from 'react-native';
 import * as Updates from 'expo-updates';
 import React from 'react';
+import { strings } from '../../constants/strings';
 
 /**
  * Restarts the app on press
@@ -16,8 +17,8 @@ const handleRestart = async () => {
 export function FallBack() {
   return (
     <View style={styles.container}>
-      <Text>Oops 😞!</Text>
-      <Text>We Encountered an error!</Text>
+      <Text>{strings.error.errorTitle}</Text>
+      <Text>{strings.error.errorMessage}</Text>
       <Button title='Restart the app' onPress={handleRestart} />
     </View>
   );

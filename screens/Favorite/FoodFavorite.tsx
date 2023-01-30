@@ -8,6 +8,7 @@ import GridTile from '../../components/Food/FoodGridTile';
 import { AppDispatch, RootState } from '../../store/configureStore';
 import { FoodListScreenProps } from '../../types/props';
 import { fetchFoodFavs } from '../../store/foodSlice';
+import { strings } from '../../constants/strings';
 
 const FoodFavorite = ({ navigation }: FoodListScreenProps) => {
   const { favFoods }: { favFoods: Food[] } = useSelector((state: RootState) => state.foods);
@@ -50,9 +51,7 @@ const FoodFavorite = ({ navigation }: FoodListScreenProps) => {
         />
       ) : (
         <View style={styles.container}>
-          <Text style={{ ...styles.text, color: colors.text }}>
-            You don't have a favorite food yet!
-          </Text>
+          <Text style={{ ...styles.text, color: colors.text }}>{strings.noFavoriteFood}</Text>
         </View>
       )}
     </>

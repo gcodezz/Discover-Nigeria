@@ -5,6 +5,7 @@ import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawe
 import { useDispatch } from 'react-redux';
 
 import { toggleMode } from '../../store/modeSlice';
+import { strings } from '../../constants/strings';
 
 const DrawerContent = (props: any) => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const DrawerContent = (props: any) => {
                   color: colors.text,
                 }}
               >
-                Dark Theme
+                {strings.darkTheme}
               </Text>
               <View pointerEvents='none'>
                 <Switch value={paperTheme.dark} color='#aa18ea' />

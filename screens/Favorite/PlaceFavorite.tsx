@@ -8,6 +8,7 @@ import GridTile from '../../components/Food/FoodGridTile';
 import { AppDispatch, RootState } from '../../store/configureStore';
 import { PlaceListScreenProps } from '../../types/props';
 import { fetchPlaceFavs } from '../../store/placeSlice';
+import { strings } from '../../constants/strings';
 
 const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
   const { favPlaces }: { favPlaces: Place[] } = useSelector((state: RootState) => state.places);
@@ -50,9 +51,7 @@ const PlaceFavorite = ({ navigation }: PlaceListScreenProps) => {
         />
       ) : (
         <View style={styles.container}>
-          <Text style={{ ...styles.text, color: colors.text }}>
-            You don't have a favorite place yet!
-          </Text>
+          <Text style={{ ...styles.text, color: colors.text }}>{strings.noFavoritePlace}</Text>
         </View>
       )}
     </>

@@ -1,4 +1,5 @@
-import { StyleSheet, View, Dimensions } from 'react-native';
+/* eslint-disable react-native/no-color-literals */
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Card } from 'react-native-paper';
 
@@ -9,8 +10,6 @@ interface Props {
   onSelect: () => void;
   flex: number;
 }
-
-const { height } = Dimensions.get('window');
 
 const GridTile = (props: Props) => {
   return (
@@ -44,8 +43,5 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     backgroundColor: '#737373',
-  },
-  card: {
-    height: height * 0.2,
   },
 });

@@ -10,6 +10,7 @@ import BigImage from '../../components/UI/BigImage';
 import TouchableCmp from '../../components/UI/TouchableBtn';
 import { AppDispatch, RootState } from '../../store/configureStore';
 import { toggleFoodFavorite } from '../../store/foodSlice';
+import { strings } from '../../constants/strings';
 
 const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
   const { id, title } = route.params;
@@ -43,14 +44,14 @@ const FoodDetailsScreen = ({ route, navigation }: FoodDetailsScreenProps) => {
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <View style={styles.margin}>
         <BigImage uri={selectedFood.image} />
-        <Text style={{ ...styles.textStyle, color: colors.text }}>Ingredients</Text>
+        <Text style={{ ...styles.textStyle, color: colors.text }}>{strings.ingredients}</Text>
         {selectedFood?.ingredients.map((ing, index) => (
           <View key={index} style={styles.direction}>
             <Icon iconName='dot-single' />
             <Text style={{ ...styles.miniText, color: colors.text }}>{ing}</Text>
           </View>
         ))}
-        <Text style={{ ...styles.textStyle, color: colors.text }}>Directions</Text>
+        <Text style={{ ...styles.textStyle, color: colors.text }}>{strings.directions}</Text>
         {selectedFood?.directions.map((step, index) => (
           <View key={index} style={styles.direction}>
             <Icon iconName='dot-single' />
