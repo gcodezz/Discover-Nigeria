@@ -5,6 +5,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import StartupScreen from './screens/General/StartupScreen';
 import { useAppStart } from './hooks/useAppStart';
 import { makeStore } from './store/configureStore';
+import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 
 enableScreens();
 
@@ -14,8 +15,10 @@ export default function App() {
     return null;
   }
   return (
-    <ReduxProvider store={makeStore}>
-      <StartupScreen />
-    </ReduxProvider>
+    <ErrorBoundary>
+      <ReduxProvider store={makeStore}>
+        <StartupScreen />
+      </ReduxProvider>
+    </ErrorBoundary>
   );
 }

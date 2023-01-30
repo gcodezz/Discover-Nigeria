@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-color-literals */
 import { View, StyleSheet, Dimensions } from 'react-native';
 import React from 'react';
 import { Card } from 'react-native-paper';
@@ -18,7 +19,7 @@ const FoodGridTile = (props: Props) => {
       <TouchableCmp onPress={props.onSelect}>
         <Card style={styles.cardStyle}>
           <Card.Cover style={styles.cardCover} source={{ uri: props.image }} />
-          <Card.Content style={{ height: '20%', backgroundColor: '#737373' }}>
+          <Card.Content style={styles.cardContent}>
             <Card.Title titleStyle={styles.title} title={props.title} />
           </Card.Content>
         </Card>
@@ -53,5 +54,9 @@ const styles = StyleSheet.create({
   cardCover: {
     flex: 1,
     height: '80%',
+  },
+  cardContent: {
+    height: '20%',
+    backgroundColor: '#737373',
   },
 });
