@@ -8,7 +8,7 @@ import Icon from '../../components/UI/Icon';
 import BigImage from '../../components/UI/BigImage';
 import TouchableCmp from '../../components/UI/TouchableBtn';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppDispatch, RootState } from '../../App';
+import { AppDispatch, RootState } from '../../store/configureStore';
 import { togglePlaceFavorite } from '../../store/placeSlice';
 
 const PlaceDetails = ({ route, navigation }: PlaceDetailsScreenProps) => {

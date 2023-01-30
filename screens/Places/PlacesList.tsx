@@ -8,7 +8,7 @@ import PlaceGridTile from '../../components/Food/FoodGridTile';
 import Icon from '../../components/UI/Icon';
 import { PlaceListScreenProps } from '../../types/props';
 import TouchableCmp from '../../components/UI/TouchableBtn';
-import { RootState } from '../../App';
+import { RootState } from '../../store/configureStore';
 
 const PlacesList = ({ navigation }: PlaceListScreenProps) => {
   const theme = useTheme();

@@ -5,7 +5,7 @@ import { useTheme } from '@react-navigation/native';
 
 import { FoodItem, Food } from '../../data/foods';
 import GridTile from '../../components/Food/FoodGridTile';
-import { AppDispatch, RootState } from '../../App';
+import { AppDispatch, RootState } from '../../store/configureStore';
 import { FoodListScreenProps } from '../../types/props';
 import { fetchFoodFavs } from '../../store/foodSlice';
 

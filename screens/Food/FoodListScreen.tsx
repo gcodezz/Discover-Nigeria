@@ -8,11 +8,11 @@ import FoodGridTile from '../../components/Food/FoodGridTile';
 import Icon from '../../components/UI/Icon';
 import { FoodListScreenProps } from '../../types/props';
 import TouchableCmp from '../../components/UI/TouchableBtn';
-// import { RootState } from '../../App';
+import { RootState } from '../../store/configureStore';
 
 const FoodListScreen = ({ navigation }: FoodListScreenProps) => {
   const theme = useTheme();
-  const availableFoods: Food[] = useSelector((state: any) => state.foods.availableFoods);
+  const availableFoods: Food[] = useSelector((state: RootState) => state.foods.availableFoods);
 
   useEffect(() => {
     navigation.setOptions({

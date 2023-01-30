@@ -19,7 +19,7 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
     setSound(sound);
 
     await sound.playAsync();
-  }, [sound]);
+  }, []);
 
   useEffect(() => {
     return sound
@@ -37,7 +37,7 @@ const CultureDetailsScreen = ({ route, navigation }: CultureDetailsScreenProps) 
     navigation.setOptions({
       headerTitle: title,
     });
-  }, [navigation]);
+  }, [navigation, title]);
 
   const renderGridItem = ({ item }: CultureDetailItem) => {
     return (
